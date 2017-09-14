@@ -1,7 +1,7 @@
 <template>
   <main class="orders">
     <div class="order-container">
-      <order  v-for="i in 10" :key='i' />
+      <order />
     </div>
   </main>
 </template>

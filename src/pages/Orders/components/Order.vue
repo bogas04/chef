@@ -1,10 +1,17 @@
 <template>
-  <div class="order"></div>
+  <div class="order">
+    <chip>Fulfilled</chip>
+    <chip>Restaurant</chip>
+  </div>
 </template>
 
 <script>
-export default {
+import { Chip } from '@/components';
 
+export default {
+  components: {
+    Chip,
+  },
 };
 </script>
 
@@ -13,7 +20,7 @@ export default {
   width: 280px;
   height: 360px;
   margin: 8px;
-  padding: 4px;
+  padding: 8px;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
