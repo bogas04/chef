@@ -13,7 +13,7 @@ export default {
   name: 'AppHeader',
   data() {
     return {
-      tabs: ['orders', 'menu', 'tables', 'reports'],
+      tabs: ['orders', 'menu', 'tables', 'reservations', 'delivery', 'reports'],
       active: 'orders',
     };
   },
