@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Orders from '@/pages/Orders/Orders';
+import Orders from '@/containers/Orders/Orders';
 
 Vue.use(Router);
 
