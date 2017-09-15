@@ -8,7 +8,7 @@
           <chip>{{ order.type }}</chip>
         </div>
       </div>
-      <span>Place {{ timestamp }}</span>
+      <span>Placed {{ time }}</span>
       <span>{{ order.user.name }}</span>
     </div>
     <hr>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { distanceInWordsToNow } from 'date-fns';
 import { Chip } from '@/components';
 
 export default {
@@ -27,10 +28,10 @@ export default {
   components: {
     Chip,
   },
-  data() {
-    return {
-      timestamp: '10 mins ago',
-    };
+  computed: {
+    time() {
+      return distanceInWordsToNow(this.order.timestamp);
+    },
   },
 };
 </script>
