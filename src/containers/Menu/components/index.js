@@ -1,1 +1,1 @@
-export { default as MenuItem } from './MenuItem.vue'; // eslint-disable-line
+export { default as Item } from './Item.vue'; // eslint-disable-line

@@ -1,16 +1,16 @@
 <template>
   <main class="menu">
-    <menu-item v-for="item in menu.items" :key="item.id" :item="item" />
+    <item v-for="item in menu.items" :key="item.id" :item="item" />
   </main>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { MenuItem } from './components';
+import { Item } from './components';
 
 export default {
   components: {
-    MenuItem,
+    Item,
   },
   computed: {
     ...mapState([

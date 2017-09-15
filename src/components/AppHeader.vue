@@ -15,7 +15,7 @@ export default {
   name: 'AppHeader',
   data() {
     return {
-      tabs: ['orders', 'menu', 'tables', 'reservations', 'delivery', 'reports'],
+      tabs: ['orders', 'menu', 'tables', 'reservations', 'delivery', 'inventory', 'reports'],
       active: 'orders',
     };
   },
