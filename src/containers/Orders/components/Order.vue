@@ -1,7 +1,21 @@
 <template>
   <div class="order">
-    <chip>Fulfilled</chip>
-    <chip>Restaurant</chip>
+    <div class="order-info">
+      <div class="order-meta">
+        <span class="title">#{{ number }}</span>
+        <div class="inline">
+          <chip>{{ status }}</chip>
+          <chip>{{ type }}</chip>
+        </div>
+      </div>
+      <span>Place {{ timestamp }}</span>
+      <span>{{ user }}</span>
+    </div>
+    <hr>
+    <div class="order-snippet">
+      <span class="sub">Order</span>
+      <span class="order-item" v-for="item in order" :key="item.title">{{ item.title }}</span>
+    </div>
   </div>
 </template>
 
@@ -11,6 +25,26 @@ import { Chip } from '@/components';
 export default {
   components: {
     Chip,
+  },
+  data() {
+    return {
+      status: 'Fulfilled',
+      type: 'Restaurant',
+      number: 12,
+      timestamp: '10 mins ago',
+      user: 'Mark Thomson',
+      order: [
+        {
+          title: 'BBQ pulled pork burger',
+        },
+        {
+          title: 'Blackened Salmon burger',
+        },
+        {
+          title: 'Deli dog',
+        },
+      ],
+    };
   },
 };
 </script>
@@ -28,5 +62,48 @@ export default {
 
 .order:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #616161;
+  font-size: 18px;
+}
+
+.inline {
+  display: flex;
+}
+
+.order-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+hr {
+  margin: 8px 0;
+}
+
+.order-snippet {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+.sub {
+  text-transform: uppercase;
+  color: #D32F2F;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.order-item {
+  padding: 2px 0;
 }
 </style>
