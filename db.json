@@ -1,0 +1,87 @@
+{
+  "orders": [
+    {
+      "id": "774",
+      "number": 1,
+      "type": "restaurant",
+      "status": "fulfilled",
+      "table": 2,
+      "user": "8124",
+      "timestamp": 1505475466600,
+      "items": ["576", "700"]
+    },
+    {
+      "id": "155",
+      "number": 2,
+      "type": "takeout",
+      "status": "paid",
+      "table": 4,
+      "user": "133",
+      "timestamp": 1505475366600,
+      "items": ["576", "621", "534"]
+    },
+    {
+      "id": "291",
+      "number": 3,
+      "type": "partial",
+      "status": "fulfilled",
+      "table": 1,
+      "user": "2495",
+      "timestamp": 1505475266600,
+      "items": ["576"]
+    }
+  ],
+  "menu": {
+    "items": {
+      "576": {
+        "id": "576",
+        "title": "BBQ pulled pork burger",
+        "description": "Made with delicous pork, done to perfection",
+        "category": "",
+        "price": 888
+      },
+      "621": {
+        "id": "621",
+        "title": "Blackened Salmon burger",
+        "description": "Made with the finest salmon",
+        "category": "",
+        "price": 544
+      },
+      "700": {
+        "id": "700",
+        "title": "Deli dog",
+        "description": "The best dog in the town",
+        "category": "",
+        "price": 993
+      },
+      "704": {
+        "id": "704",
+        "title": "Alfredo pasta",
+        "description": "White sauce made with smooth cheese",
+        "category": "",
+        "price": 794
+      },
+      "534": {
+        "id": "534",
+        "title": "Meat lovers pizza",
+        "description": "You read that right",
+        "category": "",
+        "price": 707
+      }
+    }
+  },
+  "users": {
+    "8124": {
+      "id": "8124",
+      "name": "Harvey Specter"
+    },
+    "133": {
+      "id": "133",
+      "name": "Ron Swanson"
+    },
+    "2495": {
+      "id": "2495",
+      "name": "Rick Sanchez"
+    }
+  }
+}

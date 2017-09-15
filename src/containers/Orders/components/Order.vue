@@ -9,6 +9,7 @@
         </div>
       </div>
       <span>Placed {{ time }}</span>
+      <span>Table {{ order.table }}</span>
       <span>{{ order.user.name }}</span>
     </div>
     <hr>
