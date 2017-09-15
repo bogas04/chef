@@ -17,5 +17,9 @@ export default new Router({
       name: 'Menu',
       component: Menu,
     },
+    {
+      path: '*',
+      redirect: Orders,
+    },
   ],
 });
