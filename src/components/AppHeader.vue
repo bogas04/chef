@@ -1,9 +1,11 @@
 <template>
   <header class="app-header">
     <div class="tab-container">
-      <div :class="{ tab, active: active === tab }" v-for="tab in tabs" :key="tab" @click='active = tab'>
-        <span>{{ tab }}</span>
-      </div>
+      <router-link v-for="tab in tabs" :key="tab" :to="tab">
+        <div :class="{ tab, active: active === tab }" @click='active = tab'>
+          <span>{{ tab }}</span>
+        </div>
+      </router-link>
     </div>
   </header>
 </template>
@@ -31,6 +33,10 @@ export default {
   height: 100%;
   display: flex;
   flex-wrap: nowrap;
+}
+
+a {
+  text-decoration: none;
 }
 
 .tab {
