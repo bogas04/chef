@@ -1,5 +1,8 @@
 <template>
   <main class="orders">
+    <div class="orders-header">
+      <app-button primary={true}>Create Order</app-button>
+    </div>
     <div class="order-container">
       <order v-for="order in orders" :key="order.id" :order="order" />
     </div>
@@ -8,12 +11,14 @@
 
 <script>
 import { mapState } from 'vuex';
+import { Button } from '@/components';
 import Order from './components';
 
 export default {
   name: 'Orders',
   components: {
     Order,
+    AppButton: Button,
   },
   computed: {
     ...mapState({
@@ -33,5 +38,11 @@ export default {
 .order-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.orders-header {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 4px;
 }
 </style>
