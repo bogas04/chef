@@ -8,12 +8,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import AppHeader from '@/components/AppHeader';
 
 export default {
   name: 'app',
   components: {
     AppHeader,
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    ...mapActions([
+      'fetchData',
+    ]),
   },
 };
 </script>
@@ -38,11 +47,13 @@ export default {
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
+
 .slide-fade-leave-active {
   transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 
-.slide-fade-enter, .slide-fade-leave-to {
+.slide-fade-enter,
+.slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
 }
