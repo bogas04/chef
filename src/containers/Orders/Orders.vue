@@ -7,12 +7,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Order from './components';
 
 export default {
   name: 'Orders',
   components: {
     Order,
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    ...mapActions([
+      'fetchData',
+    ]),
   },
 };
 </script>

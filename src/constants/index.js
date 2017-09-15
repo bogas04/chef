@@ -10,3 +10,7 @@ export const ORDER_TYPES = {
   TAKE_AWAY: 'TAKE_AWAY',
   DELIVERY: 'DELIVERY',
 };
+
+const MOCK_API_URL = 'http://localhost:3000';
+
+export const API_ENDPOINT = MOCK_API_URL;
