@@ -2,19 +2,19 @@
   <div class="order">
     <div class="order-info">
       <div class="order-meta">
-        <span class="title">#{{ number }}</span>
+        <span class="title">#{{ order.number }}</span>
         <div class="inline">
-          <chip>{{ status }}</chip>
-          <chip>{{ type }}</chip>
+          <chip>{{ order.status }}</chip>
+          <chip>{{ order.type }}</chip>
         </div>
       </div>
       <span>Place {{ timestamp }}</span>
-      <span>{{ user }}</span>
+      <span>{{ order.user.name }}</span>
     </div>
     <hr>
     <div class="order-snippet">
       <span class="sub">Order</span>
-      <span class="order-item" v-for="item in order" :key="item.title">{{ item.title }}</span>
+      <span class="order-item" v-for="item in order.items" :key="item.title">{{ item.title }}</span>
     </div>
   </div>
 </template>
@@ -23,27 +23,13 @@
 import { Chip } from '@/components';
 
 export default {
+  props: ['order'],
   components: {
     Chip,
   },
   data() {
     return {
-      status: 'Fulfilled',
-      type: 'Restaurant',
-      number: 12,
       timestamp: '10 mins ago',
-      user: 'Mark Thomson',
-      order: [
-        {
-          title: 'BBQ pulled pork burger',
-        },
-        {
-          title: 'Blackened Salmon burger',
-        },
-        {
-          title: 'Deli dog',
-        },
-      ],
     };
   },
 };

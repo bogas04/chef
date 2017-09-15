@@ -5,3 +5,5 @@ const request = url => fetch(url).then(response => response.json()).catch(() => 
 export const fetchMenu = () => request(`${API_ENDPOINT}/menu`);
 
 export const fetchOrders = () => request(`${API_ENDPOINT}/orders`);
+
+export const fetchUsers = () => request(`${API_ENDPOINT}/users`);

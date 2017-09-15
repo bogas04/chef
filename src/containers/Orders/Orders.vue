@@ -1,13 +1,13 @@
 <template>
   <main class="orders">
     <div class="order-container">
-      <order />
+      <order v-for="order in orders" :key="order.id" :order="order" />
     </div>
   </main>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Order from './components';
 
 export default {
@@ -22,6 +22,17 @@ export default {
     ...mapActions([
       'fetchData',
     ]),
+  },
+  computed: {
+    ...mapState({
+      orders(state) {
+        return state.orders.map(order => ({
+          ...order,
+          user: state.users[order.user],
+          items: order.items.map(id => state.menu.items[id]),
+        }));
+      },
+    }),
   },
 };
 </script>
