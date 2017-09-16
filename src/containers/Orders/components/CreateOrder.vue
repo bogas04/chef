@@ -12,10 +12,10 @@
 
       <hr class="divider" />
 
-      <search :options="options" @selectItem="addToSelectedItems"/>
+      <search :options="options" @selectItem="addToSelectedItems" />
 
       <div class="items">
-        <span class="subheader">items</span>
+        <span class="subheader" v-if="selectedItems.length">items</span>
         <span class="item" v-for="itemId in selectedItems" :key="itemId">{{ menu.items[itemId].title }}</span>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
   bottom: 8px;
   width: 480px;
   background: #FAFAFA;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 2px;
 }
 
@@ -83,7 +83,7 @@ header {
   border-radius: 2px;
 }
 
-header > span {
+header>span {
   line-height: 36px;
   margin-left: 12px;
 }
@@ -105,7 +105,7 @@ header > span {
   margin: 12px;
 }
 
-.table-control > input {
+.table-control>input {
   height: 30px;
   width: 48px;
   font-size: 20px;
