@@ -1,6 +1,7 @@
 <template>
   <div class="menu-item">
     <span class="item-title">{{ item.title }}</span>
+    <div class="edit-icon">Edit</div>
   </div>
 </template>
 
@@ -12,15 +13,26 @@ export default {
 
 <style scoped>
 .menu-item {
-  width: 280px;
-  height: 180px;
+  width: 240px;
+  height: 56px;
   margin: 8px;
   padding: 8px;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .item-title {
   font-size: 20px;
+}
+
+.edit-icon {
+  visibility: hidden;
+}
+
+.menu-item:hover > .edit-icon {
+  visibility: visible;
 }
 </style>
