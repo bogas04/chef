@@ -3,7 +3,7 @@
     <div class="tab-container">
       <router-link v-for="tab in tabs" :key="tab.title" :to="tab.title">
         <div :class="{ tab, active: active === tab.title }" @click='active = tab.title'>
-          <app-icon :type='tab.icon' />
+          <app-icon class="icon" :name='tab.icon' width="24" height="24" />
           <span>{{ tab.title }}</span>
         </div>
       </router-link>
@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import { Icon } from '@/components';
-
 export default {
   name: 'AppHeader',
   data() {
@@ -23,15 +21,12 @@ export default {
         { title: 'menu', icon: 'vegetables' },
         { title: 'tables', icon: 'store' },
         { title: 'reservations', icon: 'restaurant' },
-        { title: 'delivery', icon: 'foodStall' },
+        { title: 'delivery', icon: 'food-stall' },
         { title: 'inventory', icon: 'stew' },
         { title: 'reports', icon: 'salad' },
       ],
       active: 'orders',
     };
-  },
-  components: {
-    AppIcon: Icon,
   },
 };
 </script>
@@ -63,6 +58,10 @@ a {
 }
 
 .tab > img {
+  margin-right: 8px;
+}
+
+.icon {
   margin-right: 8px;
 }
 
