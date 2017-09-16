@@ -1,5 +1,5 @@
 export { default as foodStall } from './food-stall.png';
-export { default as groceries } from './groceries.png';
+export { default as groceries } from './groceries.svg';
 export { default as restaurant } from './restaurant.png';
 export { default as salad } from './salad.png';
 export { default as stew } from './stew.png';
