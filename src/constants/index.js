@@ -6,7 +6,7 @@ export const ORDER_STATUS = {
 };
 
 export const ORDER_TYPES = {
-  RESTURANT: 'RESTURANT',
+  RESTAURANT: 'RESTAURANT',
   TAKE_AWAY: 'TAKE_AWAY',
   DELIVERY: 'DELIVERY',
 };

@@ -20,6 +20,9 @@ export default new Vuex.Store({
       state.orders = payload.orders;
       state.users = payload.users;
     },
+    addOrder(state, payload) {
+      state.orders.push(payload);
+    },
   },
   actions: {
     async fetchData({ commit }) {

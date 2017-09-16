@@ -21,14 +21,15 @@
     </div>
 
     <div class="button-container">
-      <app-button primary={true}>create</app-button>
+      <app-button primary={true} @click.native="createOrder">create</app-button>
       <app-button @click.native="dismiss">discard</app-button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
+import { buildOrder } from '@/utils/order';
 import { Button } from '@/components';
 import Search from './Search';
 
@@ -49,6 +50,14 @@ export default {
     addToSelectedItems(id) {
       this.selectedItems.push(id);
     },
+    createOrder() {
+      const order = buildOrder({ items: [...this.selectedItems] });
+      this.addOrder(order);
+      this.dismiss();
+    },
+    ...mapMutations([
+      'addOrder',
+    ]),
   },
   computed: {
     ...mapState({
