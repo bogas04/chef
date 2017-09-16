@@ -5,16 +5,20 @@
     </header>
 
     <div class="order-info">
-      <div class="table-control">
+      <div class="table-control control">
         <span>Table</span>
         <input type="number" v-model="table" />
+      </div>
+
+      <div class="type-control control">
+        <div :class="{ type, selected: type === selectedType }" v-for="type in types" :key="type" @click='selectedType = type'>{{ type }}</div>
       </div>
 
       <hr class="divider" />
 
       <search :options="options" @selectItem="addToSelectedItems" />
 
-      <div class="items">
+      <div class="items control">
         <span class="subheader" v-if="selectedItems.length">items</span>
         <span class="item" v-for="itemId in selectedItems" :key="itemId">{{ menu.items[itemId].title }}</span>
       </div>
@@ -31,6 +35,7 @@
 import { mapState, mapMutations } from 'vuex';
 import { buildOrder } from '@/utils/order';
 import { Button } from '@/components';
+import { ORDER_TYPES } from '@/constants';
 import Search from './Search';
 
 export default {
@@ -42,6 +47,8 @@ export default {
     return {
       selectedItems: [],
       table: 1,
+      types: ORDER_TYPES,
+      selectedType: ORDER_TYPES.RESTAURANT,
     };
   },
   methods: {
@@ -55,6 +62,7 @@ export default {
       const order = buildOrder({
         number: this.totalOrders + 1,
         table: this.table,
+        type: this.selectedType,
         items: [...this.selectedItems],
       });
 
@@ -112,9 +120,38 @@ header>span {
 .table-control {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.control {
   padding: 4px 12px;
   margin: 12px 0;
-  align-items: center;
+}
+
+.type-control {
+  display: flex;
+  font-size: 16px;
+}
+
+.type {
+  flex-grow: 1;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border: 1px solid #E0E0E0;
+}
+
+.type:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.type:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.type.selected {
+  color: #fff;
+  background: #FF5722;
 }
 
 .divider {
@@ -135,8 +172,6 @@ input::-webkit-inner-spin-button {
 }
 
 .items {
-  padding: 4px;
-  margin: 12px;
   display: flex;
   flex-direction: column;
 }
