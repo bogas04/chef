@@ -7,7 +7,7 @@
     <div class="order-info">
       <div class="table-control">
         <span>Table</span>
-        <input type="text" />
+        <input type="number" v-model="table" />
       </div>
 
       <hr class="divider" />
@@ -41,6 +41,7 @@ export default {
   data() {
     return {
       selectedItems: [],
+      table: 1,
     };
   },
   methods: {
@@ -51,7 +52,12 @@ export default {
       this.selectedItems.push(id);
     },
     createOrder() {
-      const order = buildOrder({ items: [...this.selectedItems] });
+      const order = buildOrder({
+        number: this.totalOrders + 1,
+        table: this.table,
+        items: [...this.selectedItems],
+      });
+
       this.addOrder(order);
       this.dismiss();
     },
@@ -65,6 +71,7 @@ export default {
       options(state) {
         return Object.values(state.menu.items).map(item => ({ text: item.title, value: item.id }));
       },
+      totalOrders: state => state.orders.length,
     }),
   },
 };
@@ -119,6 +126,12 @@ header>span {
   width: 48px;
   font-size: 20px;
   text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .items {
