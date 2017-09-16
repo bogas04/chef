@@ -12,13 +12,11 @@
 
       <hr class="divider" />
 
-      <div class="search-container">
-        <input class="search" type="text" placeholder="Search for items to add..." />
-      </div>
+      <search :options="options" />
 
       <div class="items">
         <span class="subheader">items</span>
-        <span class="item" v-for="item in items" :key="item">{{ item }}</span>
+        <span class="item" v-for="itemId in selectedItems" :key="itemId">{{ itemId }}</span>
       </div>
     </div>
 
@@ -30,21 +28,32 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import { Button } from '@/components';
+import Search from './Search';
 
 export default {
   components: {
+    Search,
     AppButton: Button,
   },
   data() {
     return {
-      items: ['BBQ Pork ribs', 'The Deli dog'],
+      selectedItems: [],
     };
   },
   methods: {
     dismiss() {
       this.$emit('update:orderPopupVisible', false);
     },
+  },
+  computed: {
+    ...mapState({
+      menu: state => state.menu,
+      options(state) {
+        return Object.values(state.menu.items).map(item => ({ text: item.title, value: item.id }));
+      },
+    }),
   },
 };
 </script>
@@ -58,7 +67,7 @@ export default {
   top: 8px;
   bottom: 8px;
   width: 480px;
-  background: #fff;
+  background: #FAFAFA;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 2px;
 }
@@ -91,20 +100,6 @@ header > span {
 
 .divider {
   margin: 12px;
-}
-
-.search-container {
-  display: flex;
-}
-
-.search {
-  flex-grow: 1;
-  height: 30px;
-  margin: 12px;
-  padding: 4px 12px;
-  border-radius: 4px;
-  border: 1px solid #BDBDBD;
-  font-size: 16px;
 }
 
 .table-control > input {
