@@ -37,36 +37,43 @@
         "id": "576",
         "title": "BBQ pulled pork burger",
         "description": "Made with delicous pork, done to perfection",
-        "category": "",
+        "category": "Burgers",
         "price": 888
       },
       "621": {
         "id": "621",
         "title": "Blackened Salmon burger",
         "description": "Made with the finest salmon",
-        "category": "",
+        "category": "Burgers",
         "price": 544
       },
       "700": {
         "id": "700",
         "title": "Deli dog",
         "description": "The best dog in the town",
-        "category": "",
+        "category": "Burgers",
         "price": 993
       },
       "704": {
         "id": "704",
         "title": "Alfredo pasta",
         "description": "White sauce made with smooth cheese",
-        "category": "",
+        "category": "Pizza & Pasta",
         "price": 794
       },
       "534": {
         "id": "534",
         "title": "Meat lovers pizza",
         "description": "You read that right",
-        "category": "",
+        "category": "Pizza & Pasta",
         "price": 707
+      },
+      "134": {
+        "id": "134",
+        "title": "Creme Brule",
+        "description": "You read that right",
+        "category": "Desserts",
+        "price": 450
       }
     }
   },
