@@ -12,11 +12,11 @@
 
       <hr class="divider" />
 
-      <search :options="options" />
+      <search :options="options" @selectItem="addToSelectedItems"/>
 
       <div class="items">
         <span class="subheader">items</span>
-        <span class="item" v-for="itemId in selectedItems" :key="itemId">{{ itemId }}</span>
+        <span class="item" v-for="itemId in selectedItems" :key="itemId">{{ menu.items[itemId].title }}</span>
       </div>
     </div>
 
@@ -45,6 +45,9 @@ export default {
   methods: {
     dismiss() {
       this.$emit('update:orderPopupVisible', false);
+    },
+    addToSelectedItems(id) {
+      this.selectedItems.push(id);
     },
   },
   computed: {

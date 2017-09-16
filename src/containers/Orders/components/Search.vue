@@ -2,7 +2,7 @@
   <div class="search-container">
     <input class="search" v-model="query" type="text" placeholder="Search for items to add..." />
     <div class="results" v-if="results.length">
-      <div class="result" v-for="option in results" :key="option.value">
+      <div class="result" v-for="option in results" :key="option.value" @click="selectOption(option.value)">
         <span>{{ option.text }}</span>
       </div>
     </div>
@@ -18,6 +18,12 @@ export default {
     return {
       query: '',
     };
+  },
+  methods: {
+    selectOption(value) {
+      this.query = '';
+      this.$emit('selectItem', value);
+    },
   },
   computed: {
     results() {
