@@ -1,8 +1,8 @@
 <template>
   <div class="search-container">
-    <input class="search" type="text" placeholder="Search for items to add..." />
-    <div class="results">
-      <div class="result" v-for="option in options" :key="option.value">
+    <input class="search" v-model="query" type="text" placeholder="Search for items to add..." />
+    <div class="results" v-if="results.length">
+      <div class="result" v-for="option in results" :key="option.value">
         <span>{{ option.text }}</span>
       </div>
     </div>
@@ -10,8 +10,21 @@
 </template>
 
 <script>
+import Fuse from 'fuse.js';
+
 export default {
   props: ['options'],
+  data() {
+    return {
+      query: '',
+    };
+  },
+  computed: {
+    results() {
+      const fuse = new Fuse(this.options, { keys: ['text'] });
+      return fuse.search(this.query);
+    },
+  },
 };
 </script>
 
