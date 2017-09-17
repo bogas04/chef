@@ -23,6 +23,9 @@ export default new Vuex.Store({
     addOrder(state, payload) {
       state.orders.push(payload);
     },
+    addMenuItem(state, payload) {
+      state.menu.items[payload.id] = payload;
+    },
   },
   actions: {
     async fetchData({ commit }) {

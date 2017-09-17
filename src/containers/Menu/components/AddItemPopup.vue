@@ -7,19 +7,19 @@
     <div class="form-container">
       <div class="control-container">
         <label for="title">Title</label>
-        <input type="text" class="control full" />
+        <input type="text" class="control full" v-model="title" />
       </div>
       <div class="control-container">
         <label for="category">Category</label>
-        <input type="text" class="control full" />
+        <input type="text" class="control full" v-model="category" />
       </div>
       <div class="control-container">
         <label for="description">Description</label>
-        <input type="text" class="control full" />
+        <input type="text" class="control full" v-model="description" />
       </div>
       <div class="control-container inline">
         <label for="price">Price</label>
-        <input type="number" class="control" />
+        <input type="number" class="control" v-model.number="price" />
       </div>
       <div class="control-container">
         <label for="tags">Tags</label>
@@ -35,14 +35,16 @@
     </div>
 
     <div class="button-container">
-      <app-button primary={true}>Add</app-button>
+      <app-button primary={true} @click.native="addItem">Add</app-button>
       <app-button>Discard</app-button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import { MENU_ITEM_TAGS } from '@/constants';
+import { buildMenuItem } from '@/utils/order';
 import { Button } from '@/components';
 
 export default {
@@ -52,6 +54,10 @@ export default {
   data() {
     return {
       tags: MENU_ITEM_TAGS,
+      title: '',
+      category: '',
+      description: '',
+      price: null,
       selectedTags: {},
     };
   },
@@ -59,6 +65,19 @@ export default {
     toggleTag(tag) {
       this.selectedTags[tag] = !this.selectedTags[tag];
     },
+    addItem() {
+      const item = buildMenuItem({
+        title: this.title,
+        category: this.category,
+        description: this.description,
+        price: this.price,
+        selectedTags: { ...this.selectedTags },
+      });
+      this.addMenuItem(item);
+    },
+    ...mapMutations([
+      'addMenuItem',
+    ]),
   },
 };
 </script>

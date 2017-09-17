@@ -17,3 +17,12 @@ export const buildOrder = order => ({
   ...getOrderDefaults(),
   ...order,
 });
+
+const getMenuItemDefaults = () => ({
+  id: uniqueId(),
+});
+
+export const buildMenuItem = item => ({
+  ...getMenuItemDefaults(),
+  ...item,
+});
