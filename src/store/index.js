@@ -29,9 +29,7 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchData({ commit }) {
-      const menu = await fetchMenu();
-      const orders = await fetchOrders();
-      const users = await fetchUsers();
+      const [menu, orders, users] = await Promise.all([fetchMenu(), fetchOrders(), fetchUsers()]);
 
       commit({
         type: 'setData',
