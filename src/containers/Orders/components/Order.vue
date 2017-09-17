@@ -16,10 +16,23 @@
         <span class="user">{{ order.user.name }}</span>
       </div>
     </div>
+    
     <hr>
+    
     <div class="order-snippet">
       <span class="sub">Order</span>
       <span class="order-item" v-for="item in order.items" :key="item.title">{{ item.title }}</span>
+    </div>
+
+    <div class="order-controls">
+      <div class="control">
+        <app-icon name="credit-card" width="24px" color="#757575" />
+        <span>Payment</span>
+      </div>
+      <div class="control">
+        <app-icon name="edit" width="24px" color="#757575" />
+        <span>Edit</span>
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +61,8 @@ export default {
   margin: 8px;
   padding: 8px;
   background: #fff;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
@@ -95,6 +110,33 @@ hr {
   display: flex;
   flex-direction: column;
   padding: 4px;
+  flex-grow: 1;
+}
+
+.order-controls {
+  display: flex;
+  height: 48px;
+  justify-content: space-around;
+  align-items: center;
+  visibility: hidden;
+}
+
+.order:hover .order-controls {
+  visibility: visible;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.control > span {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #757575;
 }
 
 .sub {
