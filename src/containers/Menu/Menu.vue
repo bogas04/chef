@@ -1,7 +1,7 @@
 <template>
   <main class="menu">
     <div class="menu-header">
-      <app-button primary={true}>Add Item</app-button>
+      <app-button primary={true} @click.native="itemPopupVisible = true">Add Item</app-button>
     </div>
     <div class="category-container" v-for="(items, category) in menu.categories" :key="category">
       <span class="category-header">{{ category }}</span>
@@ -11,8 +11,8 @@
     </div>
 
     <transition name="slide-fade">
-      <floating-window>
-        <add-item-popup />
+      <floating-window v-if="itemPopupVisible">
+        <add-item-popup :itemPopupVisible.sync="itemPopupVisible" />
       </floating-window>
     </transition>
   </main>
@@ -30,6 +30,11 @@ export default {
     AppButton: Button,
     FloatingWindow,
     AddItemPopup,
+  },
+  data() {
+    return {
+      itemPopupVisible: false,
+    };
   },
   computed: {
     ...mapState({

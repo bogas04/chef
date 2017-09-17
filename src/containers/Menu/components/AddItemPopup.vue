@@ -36,7 +36,7 @@
 
     <div class="button-container">
       <app-button primary={true} @click.native="addItem">Add</app-button>
-      <app-button>Discard</app-button>
+      <app-button @click.native="dismiss">Discard</app-button>
     </div>
   </div>
 </template>
@@ -74,6 +74,10 @@ export default {
         selectedTags: { ...this.selectedTags },
       });
       this.addMenuItem(item);
+      this.dismiss();
+    },
+    dismiss() {
+      this.$emit('update:itemPopupVisible', false);
     },
     ...mapMutations([
       'addMenuItem',
