@@ -2,15 +2,19 @@
   <div class="order">
     <div class="order-info">
       <div class="order-meta">
-        <span class="title">#{{ order.number }}</span>
+        <div>
+          <span class="title">#{{ order.number }}</span><br/>
+          <span>Placed <i>{{ time }}</i></span>
+        </div>
         <div class="inline">
           <chip>{{ order.status }}</chip>
-          <chip>{{ order.type }}</chip>
+          <chip color='#1565C0'>{{ order.type }}</chip>
         </div>
       </div>
-      <span>Placed {{ time }}</span>
-      <span>Table {{ order.table }}</span>
-      <span>{{ order.user.name }}</span>
+      <div class="order-meta">
+        <span class="table">Table {{ order.table }}</span>
+        <span class="user">{{ order.user.name }}</span>
+      </div>
     </div>
     <hr>
     <div class="order-snippet">
@@ -44,12 +48,12 @@ export default {
   margin: 8px;
   padding: 8px;
   background: #fff;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .order:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .order-info {
@@ -64,6 +68,8 @@ export default {
 
 .inline {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .order-meta {
@@ -71,6 +77,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+}
+
+.table {
+  color: #43A047;
+}
+
+.user {
+  color: #2e2e2e;
 }
 
 hr {
