@@ -7,3 +7,5 @@ export const fetchMenu = () => request(`${API_ENDPOINT}/menu`);
 export const fetchOrders = () => request(`${API_ENDPOINT}/orders`);
 
 export const fetchUsers = () => request(`${API_ENDPOINT}/users`);
+
+export const fetchReservations = () => request(`${API_ENDPOINT}/reservations`);
