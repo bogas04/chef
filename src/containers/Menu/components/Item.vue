@@ -1,7 +1,7 @@
 <template>
   <div class="menu-item">
     <span class="item-title">{{ item.title }}</span>
-    <div class="edit-icon">Edit</div>
+    <app-icon class="edit-icon" name="edit" />
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
 
 .edit-icon {
   visibility: hidden;
+  color: #757575;
 }
 
 .menu-item:hover > .edit-icon {

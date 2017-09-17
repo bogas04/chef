@@ -36,8 +36,11 @@ export default {
   box-shadow: border-box;
 }
 
+body {
+  background: #EEEEEE;  
+}
+
 #app {
-  background: #EEEEEE;
   height: 100vh;
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;

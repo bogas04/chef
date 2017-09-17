@@ -12,8 +12,14 @@
         </div>
       </div>
       <div class="order-meta">
-        <span class="table">Table {{ order.table }}</span>
-        <span class="user">{{ order.user.name }}</span>
+        <div class="table center">
+          <app-icon name="dinner" width="24px"/>
+          <span>{{ order.table }}</span>
+        </div>
+        <div class="user center">
+          <app-icon name="user" width="24px"/>
+          <span>{{ order.user.name }}</span>
+        </div>      
       </div>
     </div>
     
@@ -71,6 +77,12 @@ export default {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .order-info {
   display: flex;
   flex-direction: column;
@@ -95,7 +107,11 @@ export default {
 }
 
 .table {
-  color: #43A047;
+  color: #2E7D32;
+}
+
+.table > span {
+  margin-left: 2px;
 }
 
 .user {
