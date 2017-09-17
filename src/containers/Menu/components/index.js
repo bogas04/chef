@@ -1,1 +1,2 @@
-export { default as Item } from './Item.vue'; // eslint-disable-line
+export { default as Item } from './Item.vue';
+export { default as AddItemPopup } from './AddItemPopup.vue';

@@ -57,4 +57,10 @@ export default {
   transform: translateX(10px);
   opacity: 0;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>

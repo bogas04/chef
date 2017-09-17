@@ -165,12 +165,6 @@ header>span {
   text-align: center;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .items {
   display: flex;
   flex-direction: column;

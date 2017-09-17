@@ -11,6 +11,14 @@ export const ORDER_TYPES = {
   DELIVERY: 'DELIVERY',
 };
 
+export const MENU_ITEM_TAGS = {
+  RECOMMENDED: "Chef's recommendation",
+  SPICY: 'Spicy',
+  SEASONAL: 'Seasonal',
+  EGG: 'Contains egg',
+  VEG: 'Vegetarian',
+};
+
 const MOCK_API_URL = 'http://localhost:3000';
 
 export const API_ENDPOINT = MOCK_API_URL;
