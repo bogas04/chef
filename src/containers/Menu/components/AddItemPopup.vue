@@ -73,7 +73,7 @@ export default {
         category: this.category,
         description: this.description,
         price: this.price,
-        selectedTags: { ...this.selectedTags },
+        tags: { ...this.selectedTags },
       });
       this.addMenuItem(item);
       this.dismiss();
