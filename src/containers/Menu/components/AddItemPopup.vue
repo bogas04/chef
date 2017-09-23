@@ -24,9 +24,9 @@
       <div class="control-container">
         <label for="tags">Tags</label>
         <div class="tag-container">
-          <div 
-            v-for="(title, tag) in tags" :key="tag" 
-            :class="{ tag: true, selected: selectedTags[tag] }"       
+          <div
+            v-for="(title, tag) in tags" :key="tag"
+            :class="{ tag: true, selected: selectedTags[tag] }"
             @click='toggleTag(tag)'>
               {{ title }}
           </div>
@@ -42,7 +42,9 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapMutations } from 'vuex';
+import mapValues from 'lodash/mapValues';
 import { MENU_ITEM_TAGS } from '@/constants';
 import { buildMenuItem } from '@/utils/order';
 import { Button } from '@/components';
@@ -58,12 +60,12 @@ export default {
       category: '',
       description: '',
       price: null,
-      selectedTags: {},
+      selectedTags: mapValues(MENU_ITEM_TAGS, () => false),
     };
   },
   methods: {
     toggleTag(tag) {
-      this.selectedTags[tag] = !this.selectedTags[tag];
+      Vue.set(this.selectedTags, tag, !this.selectedTags[tag]);
     },
     addItem() {
       const item = buildMenuItem({
@@ -132,7 +134,7 @@ export default {
 }
 
 .control.full {
-  width: 100%;  
+  width: 100%;
   margin-top: 8px;
 }
 
@@ -155,13 +157,15 @@ export default {
   margin-right: 4px;
   margin-bottom: 4px;
   color: #9E9E9E;
-  cursor: pointer; 
+  cursor: pointer;
+  user-select: none;
 }
 
 .tag.selected {
   border: none;
   color: #fff;
   background: #F4511E;
+  border: 1px solid #F4511E;
 }
 
 .button-container {

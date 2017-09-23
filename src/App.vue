@@ -34,10 +34,11 @@ export default {
   margin: 0;
   padding: 0;
   box-shadow: border-box;
+  user-select: none;
 }
 
 body {
-  background: #EEEEEE;  
+  background: #EEEEEE;
 }
 
 #app {

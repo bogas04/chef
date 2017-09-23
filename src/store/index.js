@@ -25,7 +25,7 @@ export default new Vuex.Store({
       state.orders.push(payload);
     },
     addMenuItem(state, payload) {
-      state.menu.items[payload.id] = payload;
+      Vue.set(state.menu.items, payload.id, payload);
     },
   },
   actions: {
