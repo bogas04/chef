@@ -1,8 +1,8 @@
 <template>
   <header class="app-header">
     <div class="tab-container">
-      <router-link v-for="tab in tabs" :key="tab.title" :to="tab.title">
-        <div :class="{ tab, active: active === tab.title }" @click='active = tab.title'>
+      <router-link v-for="tab in tabs" :key="tab.title" :to="tab.title" exact-active-class="active-tab">
+        <div class="tab">
           <app-icon class="icon" :name='tab.icon' width="24" height="24" />
           <span>{{ tab.title }}</span>
         </div>
@@ -65,7 +65,7 @@ a {
   margin-right: 8px;
 }
 
-.tab.active {
+.active-tab .tab {
   color: #FF5722;
   border-bottom: 1px solid #FF5722;
 }
