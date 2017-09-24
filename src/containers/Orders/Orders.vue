@@ -4,8 +4,10 @@
       <app-button primary={true} @click.native="orderPopupVisible = true">Create Order</app-button>
     </div>
 
+    <bill :selectedOrder="selectedOrder" v-if="selectedOrder" />
+
     <div class="order-container">
-      <order v-for="order in orders" :key="order.id" :order="order" />
+      <order v-for="order in orders" :key="order.id" :order="order" :selectOrder.sync="selectedOrder" />
     </div>
 
     <transition name="slide-fade">
@@ -17,7 +19,7 @@
 <script>
 import { mapState } from 'vuex';
 import { Button } from '@/components';
-import { Order, CreateOrder } from './components';
+import { Order, CreateOrder, Bill } from './components';
 
 export default {
   name: 'Orders',
@@ -25,10 +27,12 @@ export default {
     Order,
     AppButton: Button,
     CreateOrder,
+    Bill,
   },
   data() {
     return {
       orderPopupVisible: false,
+      selectedOrder: null,
     };
   },
   computed: {

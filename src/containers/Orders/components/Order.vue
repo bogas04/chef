@@ -31,7 +31,7 @@
     </div>
 
     <div class="order-controls">
-      <div class="control">
+      <div class="control" @click="printOrder">
         <app-icon name="credit-card" width="24px" color="#757575" />
         <span>Payment</span>
       </div>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { distanceInWordsToNow } from 'date-fns';
 import { Chip } from '@/components';
 
@@ -51,6 +52,12 @@ export default {
   props: ['order'],
   components: {
     Chip,
+  },
+  methods: {
+    printOrder() {
+      this.$emit('update:selectOrder', this.order.id);
+      Vue.nextTick(window.print);
+    },
   },
   computed: {
     time() {
