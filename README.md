@@ -1,4 +1,4 @@
-# chef
+# chef ![travis](https://travis-ci.org/sanchitgn/chef.svg?branch=master)
 
 > Modern restaurant dashboard
 
