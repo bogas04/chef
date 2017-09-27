@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { API_ENDPOINT } from '@/constants';
+import { USER_API_ENDPOINT } from '@/constants';
+import { toMap } from '@/utils/common';
 
-export const fetchUsers = () => axios.get(`${API_ENDPOINT}/users`).then(res => res.data);
+export const fetchUsers = () => axios.get(USER_API_ENDPOINT).then(res => toMap(res.data, 'id'));
 
 // TODO
 export const addUser = user => user;

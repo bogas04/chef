@@ -21,4 +21,8 @@ export const MENU_ITEM_TAGS = {
 
 const MOCK_API_URL = 'http://localhost:3000';
 
-export const API_ENDPOINT = MOCK_API_URL;
+const API_ENDPOINT = MOCK_API_URL;
+
+export const USER_API_ENDPOINT = `${API_ENDPOINT}/users`;
+
+export const RESTAURANT_API_ENDPOINT = `${API_ENDPOINT}/restaurants/restaurant-id`;
