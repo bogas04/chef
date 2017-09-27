@@ -1,4 +1,4 @@
-export * from './menu';
-export * from './orders';
-export * from './restaurant';
-export * from './user';
+export { fetchMenu } from './menu';
+export { fetchOrders } from './orders';
+export { fetchReservations } from './restaurant';
+export { fetchUsers } from './user';
