@@ -12,12 +12,14 @@ export default {
 
 <style scoped>
 .btn {
+  font-family: 'Lato';
   text-transform: uppercase;
   padding: 6px 12px;
   border: none;
   outline: none;
   background: none;
   color: #2e2e2e;
+  cursor: pointer;
 }
 
 .btn.primary {

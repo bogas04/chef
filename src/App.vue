@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header />
+    <app-header v-if="user.loggedIn" />
     <transition name="slide-fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import AppHeader from '@/components/AppHeader';
 
 export default {
@@ -18,6 +18,9 @@ export default {
   },
   mounted() {
     this.fetchData();
+  },
+  computed: {
+    ...mapState(['user']),
   },
   methods: {
     ...mapActions([

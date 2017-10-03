@@ -13,7 +13,8 @@
       </tr>
       <tfoot>
         <tr>
-          <td>Grand total: {{ total }}</td>
+          <td>Grand total</td>
+          <td>{{ total }}</td>
         </tr>
       </tfoot>
     </table>

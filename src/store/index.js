@@ -10,6 +10,7 @@ Vue.use(Vuex);
 /* eslint-disable no-param-reassign */
 export default new Vuex.Store({
   state: {
+    user: { loggedIn: false },
     orders: [],
     menu: {
       items: {},
