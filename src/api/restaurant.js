@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { RESTAURANT_API_ENDPOINT } from '@/constants';
 
-export const fetchReservations = () => axios.get(`${RESTAURANT_API_ENDPOINT}/reservations`).then(res => res.data);
+const RESERVATION_ENDPOINT = `${RESTAURANT_API_ENDPOINT}/reservations`;
 
-// TODO
-export const addReservation = reservation => reservation;
+export const fetchReservations = () => axios.get(RESERVATION_ENDPOINT).then(res => res.data);
+
+export const addReservation = reservation => axios.post(RESERVATION_ENDPOINT, reservation)
+  .then(res => res.data);
