@@ -18,7 +18,7 @@
         </div>
         <div class="user center">
           <app-icon name="user" width="24px"/>
-          <span>{{ order.user.name }}</span>
+          <span>Rick</span>
         </div>      
       </div>
     </div>

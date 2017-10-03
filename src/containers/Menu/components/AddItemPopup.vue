@@ -43,7 +43,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 import mapValues from 'lodash/mapValues';
 import { MENU_ITEM_TAGS } from '@/constants';
 import { buildMenuItem } from '@/utils/order';
@@ -81,7 +81,7 @@ export default {
     dismiss() {
       this.$emit('update:itemPopupVisible', false);
     },
-    ...mapMutations([
+    ...mapActions([
       'addMenuItem',
     ]),
   },

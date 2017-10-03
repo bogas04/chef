@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchMenu, fetchOrders, fetchUsers, fetchReservations } from '@/api';
+import { fetchMenu, fetchOrders, fetchUsers, fetchReservations, addItem } from '@/api';
 
 Vue.use(Vuex);
 
@@ -24,7 +24,7 @@ export default new Vuex.Store({
     addOrder(state, payload) {
       state.orders.push(payload);
     },
-    addMenuItem(state, payload) {
+    setMenuItem(state, payload) {
       Vue.set(state.menu.items, payload.id, payload);
     },
   },
@@ -43,6 +43,14 @@ export default new Vuex.Store({
         orders,
         users,
         reservations,
+      });
+    },
+    async addMenuItem({ commit }, item) {
+      const it = await addItem(item);
+
+      commit({
+        type: 'setMenuItem',
+        item: it,
       });
     },
   },
