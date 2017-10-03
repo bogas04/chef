@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import { buildOrder } from '@/utils/order';
 import { Button } from '@/components';
 import { ORDER_TYPES } from '@/constants';
@@ -69,7 +69,7 @@ export default {
       this.addOrder(order);
       this.dismiss();
     },
-    ...mapMutations([
+    ...mapActions([
       'addOrder',
     ]),
   },
