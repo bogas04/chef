@@ -25,4 +25,4 @@ const API_ENDPOINT = MOCK_API_URL;
 
 export const USER_API_ENDPOINT = `${API_ENDPOINT}/users`;
 
-export const RESTAURANT_API_ENDPOINT = `${API_ENDPOINT}/restaurants/59d35b653005b04c79d29da1`;
+export const RESTAURANT_API_ENDPOINT = `${API_ENDPOINT}/restaurants/59d376ada012d767de9c4dac`;

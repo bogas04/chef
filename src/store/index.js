@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchMenu, fetchOrders, fetchUsers, fetchReservations, addItem, addOrder, addReservation } from '@/api';
+import { fetchMenu, fetchOrders, fetchUsers, fetchReservations } from '@/api';
+import menuStore from './menuStore';
+import orderStore from './orderStore';
+import reservationStore from './reservationStore';
 
 Vue.use(Vuex);
 
@@ -15,21 +18,17 @@ export default new Vuex.Store({
     users: {},
     reservations: [],
   },
+  modules: {
+    menu: menuStore,
+    orders: orderStore,
+    reservations: reservationStore,
+  },
   mutations: {
     setData(state, payload) {
       state.menu = payload.menu;
       state.orders = payload.orders;
       state.users = payload.users;
       state.reservations = payload.reservations;
-    },
-    addOrder(state, payload) {
-      state.orders.push(payload.order);
-    },
-    setMenuItem(state, payload) {
-      Vue.set(state.menu.items, payload.id, payload);
-    },
-    addReservation(state, payload) {
-      state.reservations.push(payload.reservation);
     },
   },
   actions: {
@@ -47,30 +46,6 @@ export default new Vuex.Store({
         orders,
         users,
         reservations,
-      });
-    },
-    async addMenuItem({ commit }, _item) {
-      const item = await addItem(_item);
-
-      commit({
-        type: 'setMenuItem',
-        item,
-      });
-    },
-    async addOrder({ commit }, _order) {
-      const order = await addOrder(_order);
-
-      commit({
-        type: 'addOrder',
-        order,
-      });
-    },
-    async addReservation({ commit }, _reservation) {
-      const reservation = await addReservation(_reservation);
-
-      commit({
-        type: 'addReservation',
-        reservation,
       });
     },
   },

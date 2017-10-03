@@ -38,7 +38,8 @@ export default {
   computed: {
     ...mapState({
       orders(state) {
-        return state.orders.map(order => ({
+        // FIXME: Avoid making array copy
+        return [...state.orders].map(order => ({
           ...order,
           user: state.users[order.user],
           items: order.items.map(id => state.menu.items[id]),
