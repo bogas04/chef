@@ -8,7 +8,7 @@
         </div>
         <div class="control-container">
           <label>Password</label>
-          <input type="password" class="control full" v-model="password" />
+          <input type="password" class="control full" v-model="password" @keyup.enter="login" />
         </div>
         <div class="control-container">
           <app-button primary={true} @click.native="login">Sign in</app-button>
