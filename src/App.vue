@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header v-if="user.isLoggedIn" />
+    <app-header v-if="loggedIn" />
     <transition name="slide-fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -10,6 +10,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import AppHeader from '@/components/AppHeader';
+import { LOGIN_STATUS } from '@/constants';
 
 export default {
   name: 'app',
@@ -20,12 +21,21 @@ export default {
     this.fetchData();
   },
   computed: {
-    ...mapState(['user']),
+    ...mapState({
+      loggedIn(state) {
+        return state.user.loginStatus === LOGIN_STATUS.SUCCESS;
+      },
+    }),
   },
   methods: {
     ...mapActions([
       'fetchData',
     ]),
+  },
+  watch: {
+    loggedIn(value) {
+      if (value) this.$router.replace('orders');
+    },
   },
 };
 </script>

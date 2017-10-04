@@ -1,23 +1,40 @@
 import Vue from 'vue';
 import { login } from '@/api';
+import { LOGIN_STATUS } from '@/constants';
 
 const store = {
+  state: {
+    loginStatus: LOGIN_STATUS.LOGGED_OUT,
+    id: null,
+    restaurant: null,
+  },
   mutations: {
-    setLoginStatus(state, { loginStatus }) {
-      Vue.set(state, 'isLoggedIn', loginStatus);
+    setLoginStatus(state, { loginStatus, restaurant }) {
+      Vue.set(state, 'loginStatus', loginStatus);
+
+      if (loginStatus === LOGIN_STATUS.SUCCESS) Vue.set(state, 'restaurant', restaurant);
     },
   },
   actions: {
     async attemptLogin({ commit }, credentials) {
+      commit({
+        type: 'setLoginStatus',
+        loginStatus: LOGIN_STATUS.REQUEST,
+      });
+
       try {
-        const { success = false } = await login(credentials);
+        const { success = false, restaurant } = await login(credentials);
 
         commit({
           type: 'setLoginStatus',
-          loginStatus: success,
+          loginStatus: success ? LOGIN_STATUS.SUCCESS : LOGIN_STATUS.FAILED,
+          restaurant,
         });
       } catch (e) {
-        console.error('Could not login', e); // eslint-disable-line
+        commit({
+          type: 'setLoginStatus',
+          loginStatus: LOGIN_STATUS.FAILED,
+        });
       }
     },
   },

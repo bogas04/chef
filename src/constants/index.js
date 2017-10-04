@@ -1,3 +1,10 @@
+export const LOGIN_STATUS = {
+  LOGGED_OUT: 'LOGGED_OUT',
+  REQUEST: 'REQUEST',
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE',
+};
+
 export const ORDER_STATUS = {
   INIT: 'INIT',
   PARTIALLY_FULFILLED: 'PARTIALLY_FULFILLED',
@@ -21,7 +28,7 @@ export const MENU_ITEM_TAGS = {
 
 const MOCK_API_URL = 'http://localhost:3000';
 
-const API_ENDPOINT = MOCK_API_URL;
+export const API_ENDPOINT = MOCK_API_URL;
 
 export const USER_API_ENDPOINT = `${API_ENDPOINT}/users`;
 

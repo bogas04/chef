@@ -34,10 +34,7 @@ export default {
   },
   methods: {
     login() {
-      this.attemptLogin({ username: this.username, password: this.password })
-        .then((valid) => {
-          if (valid) this.$router.replace('orders');
-        });
+      this.attemptLogin({ username: this.username, password: this.password });
     },
     ...mapActions(['attemptLogin']),
   },
