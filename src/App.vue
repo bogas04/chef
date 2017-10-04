@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header v-if="user.loggedIn" />
+    <app-header v-if="user.isLoggedIn" />
     <transition name="slide-fade" mode="out-in">
       <router-view></router-view>
     </transition>

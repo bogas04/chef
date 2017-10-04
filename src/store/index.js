@@ -4,6 +4,7 @@ import { fetchMenu, fetchOrders, fetchUsers, fetchReservations } from '@/api';
 import menuStore from './menuStore';
 import orderStore from './orderStore';
 import reservationStore from './reservationStore';
+import userStore from './userStore';
 
 Vue.use(Vuex);
 
@@ -16,12 +17,13 @@ export default new Vuex.Store({
       items: {},
       categories: [],
     },
-    users: {},
     reservations: [],
+    users: {},
   },
   modules: {
-    menu: menuStore,
+    user: userStore,
     orders: orderStore,
+    menu: menuStore,
     reservations: reservationStore,
   },
   mutations: {

@@ -8,10 +8,10 @@
         </div>
         <div class="control-container">
           <label>Password</label>
-          <input type="text" class="control full" v-model="password" />
+          <input type="password" class="control full" v-model="password" />
         </div>
         <div class="control-container">
-          <app-button primary={true}>Sign in</app-button>
+          <app-button primary={true} @click.native="login">Sign in</app-button>
         </div>
       </div>
     </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { Button } from '@/components';
 
 export default {
@@ -30,6 +31,15 @@ export default {
   },
   components: {
     AppButton: Button,
+  },
+  methods: {
+    login() {
+      this.attemptLogin({ username: this.username, password: this.password })
+        .then(() => {
+          this.$router.replace('orders');
+        });
+    },
+    ...mapActions(['attemptLogin']),
   },
 };
 </script>
