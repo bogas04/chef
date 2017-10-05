@@ -1,6 +1,7 @@
 import Vue from 'vue';
-import { login } from '@/api';
+import { login, getUserFromSession } from '@/api';
 import { LOGIN_STATUS } from '@/constants';
+import log from '@/utils/log';
 
 const store = {
   state: {
@@ -43,6 +44,19 @@ const store = {
           type: 'setLoginStatus',
           loginStatus: LOGIN_STATUS.FAILED,
         });
+      }
+    },
+    async getUser({ commit }) {
+      try {
+        const user = await getUserFromSession();
+
+        commit({
+          type: 'setLoginStatus',
+          loginStatus: LOGIN_STATUS.SUCCESS,
+          user,
+        });
+      } catch (error) {
+        log('Could not login from session');
       }
     },
   },
