@@ -4,18 +4,20 @@ import { LOGIN_STATUS } from '@/constants';
 
 const store = {
   state: {
-    loginStatus: LOGIN_STATUS.SUCCESS,
+    loginStatus: LOGIN_STATUS.LOGGED_OUT,
     id: null,
     restaurant: null,
   },
   mutations: {
-    setLoginStatus(state, { loginStatus, restaurant }) {
+    setLoginStatus(state, { loginStatus, user }) {
       Vue.set(state, 'loginStatus', loginStatus);
 
       if (loginStatus === LOGIN_STATUS.SUCCESS) {
-        Vue.set(state, 'restaurant', restaurant);
+        Vue.set(state, 'restaurant', user.restaurant);
+        Vue.set(state, 'id', user.id);
       } else {
         Vue.set(state, 'restaurant', null);
+        Vue.set(state, 'id', null);
       }
     },
   },
@@ -27,12 +29,12 @@ const store = {
       });
 
       try {
-        const { success = false, restaurant } = await login(credentials);
+        const user = await login(credentials);
 
         commit({
           type: 'setLoginStatus',
-          loginStatus: success ? LOGIN_STATUS.SUCCESS : LOGIN_STATUS.FAILED,
-          restaurant,
+          loginStatus: LOGIN_STATUS.SUCCESS,
+          user,
         });
       } catch (e) {
         commit({

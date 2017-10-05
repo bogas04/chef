@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     logout() {
-      this.setLoginStatus(LOGIN_STATUS.LOGGED_OUT);
+      this.setLoginStatus({ loginStatus: LOGIN_STATUS.LOGGED_OUT });
       this.$router.replace('login');
     },
     ...mapMutations(['setLoginStatus']),
