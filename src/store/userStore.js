@@ -4,7 +4,7 @@ import { LOGIN_STATUS } from '@/constants';
 
 const store = {
   state: {
-    loginStatus: LOGIN_STATUS.LOGGED_OUT,
+    loginStatus: LOGIN_STATUS.SUCCESS,
     id: null,
     restaurant: null,
   },
@@ -12,7 +12,11 @@ const store = {
     setLoginStatus(state, { loginStatus, restaurant }) {
       Vue.set(state, 'loginStatus', loginStatus);
 
-      if (loginStatus === LOGIN_STATUS.SUCCESS) Vue.set(state, 'restaurant', restaurant);
+      if (loginStatus === LOGIN_STATUS.SUCCESS) {
+        Vue.set(state, 'restaurant', restaurant);
+      } else {
+        Vue.set(state, 'restaurant', null);
+      }
     },
   },
   actions: {

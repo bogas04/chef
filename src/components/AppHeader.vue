@@ -8,10 +8,16 @@
         </div>
       </router-link>
     </div>
+    <div class="controls">
+      <span class="logout-control" @click="logout">Log out</span>
+    </div>
   </header>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+import { LOGIN_STATUS } from '@/constants';
+
 export default {
   name: 'AppHeader',
   data() {
@@ -28,6 +34,13 @@ export default {
       active: 'orders',
     };
   },
+  methods: {
+    logout() {
+      this.setLoginStatus(LOGIN_STATUS.LOGGED_OUT);
+      this.$router.replace('login');
+    },
+    ...mapMutations(['setLoginStatus']),
+  },
 };
 </script>
 
@@ -36,12 +49,28 @@ export default {
   width: 100%;
   height: 56px;
   background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tab-container {
   height: 100%;
   display: flex;
   flex-wrap: nowrap;
+}
+
+.controls {
+  padding: 4px;
+  margin-right: 8px;
+}
+
+.logout-control {
+  padding: 4px;
+  color: #bdbdbd;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 a {
