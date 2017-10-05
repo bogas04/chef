@@ -66,11 +66,18 @@ export default {
 }
 
 .logout-control {
-  padding: 4px;
+  padding: 6px 12px;
   color: #bdbdbd;
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+}
+
+.logout-control:hover {
+  border-color: rgb(21, 101, 192); 
+  color: rgb(21, 101, 192);
 }
 
 a {
@@ -84,6 +91,10 @@ a {
   padding: 0 12px;
   text-transform: uppercase;
   color: #424242;
+}
+
+.tab:hover {
+  color: #FF6E40;
 }
 
 .tab > img {

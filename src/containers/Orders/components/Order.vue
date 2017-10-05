@@ -32,11 +32,11 @@
 
     <div class="order-controls">
       <div class="control" @click="printOrder">
-        <app-icon name="credit-card" width="24px" color="#757575" />
+        <app-icon name="credit-card" width="30px" />
         <span>Payment</span>
       </div>
       <div class="control">
-        <app-icon name="edit" width="24px" color="#757575" />
+        <app-icon name="edit" width="30px" />
         <span>Edit</span>
       </div>
     </div>
@@ -139,7 +139,6 @@ hr {
 .order-controls {
   display: flex;
   height: 48px;
-  justify-content: space-around;
   align-items: center;
   visibility: hidden;
 }
@@ -150,16 +149,22 @@ hr {
 
 .control {
   display: flex;
-  flex-direction: column;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
+  height: 36px;
   cursor: pointer;
 }
 
-.control > span {
-  font-size: 14px;
-  margin-top: 4px;
+.control > span, .control > .svg-icon {
+  font-size: 12px;
+  height: 16px;
   color: #757575;
+  text-transform: uppercase;
+}
+
+.control:hover > span, .control:hover > .svg-icon {
+  color: rgb(21, 101, 192);
 }
 
 .sub {
