@@ -1,11 +1,8 @@
-import axios from 'axios';
+import request from '@/utils/request';
 import { LOGIN_ENDPOINT } from '@/constants';
 
-export const login = ({ username, password }) => axios.post(LOGIN_ENDPOINT, { username, password })
-  .then((res) => {
-    if (res.status !== 200) return Promise.reject();
-    return res.data;
-  });
+export const login = ({ username, password }) =>
+  request.post(LOGIN_ENDPOINT, { username, password }).then(res => res.data);
 
 // TODO: Implement sign up
 export const signup = credentials => credentials;
