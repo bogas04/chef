@@ -59,6 +59,13 @@ const store = {
         log('Could not login from session');
       }
     },
+    async logout({ commit }) {
+      commit({
+        type: 'setLoginStatus',
+        loginStatus: LOGIN_STATUS.LOGGED_OUT,
+      });
+      commit('clearData');
+    },
   },
 };
 

@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import { LOGIN_STATUS } from '@/constants';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'AppHeader',
@@ -35,11 +34,7 @@ export default {
     };
   },
   methods: {
-    logout() {
-      this.setLoginStatus({ loginStatus: LOGIN_STATUS.LOGGED_OUT });
-      this.$router.replace('login');
-    },
-    ...mapMutations(['setLoginStatus']),
+    ...mapActions(['logout']),
   },
 };
 </script>

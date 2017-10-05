@@ -35,7 +35,11 @@ export default {
   },
   watch: {
     loggedIn(value) {
-      if (value) this.$router.replace('orders');
+      if (value) {
+        this.$router.replace('orders');
+      } else {
+        this.$router.replace('login');
+      }
     },
   },
 };

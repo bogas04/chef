@@ -8,18 +8,20 @@ import userStore from './userStore';
 
 Vue.use(Vuex);
 
+const defaultStore = {
+  user: {},
+  orders: [],
+  menu: {
+    items: {},
+    categories: [],
+  },
+  reservations: [],
+  users: {},
+};
+
 /* eslint-disable no-param-reassign */
 export default new Vuex.Store({
-  state: {
-    user: { loggedIn: false },
-    orders: [],
-    menu: {
-      items: {},
-      categories: [],
-    },
-    reservations: [],
-    users: {},
-  },
+  state: { ...defaultStore },
   modules: {
     user: userStore,
     orders: orderStore,
@@ -32,6 +34,11 @@ export default new Vuex.Store({
       state.orders = payload.orders;
       state.users = payload.users;
       state.reservations = payload.reservations;
+    },
+    clearData(state) {
+      state.menu = {};
+      state.reservations = [];
+      state.orders = [];
     },
   },
   actions: {
