@@ -8,6 +8,7 @@ import Login from '@/containers/Login/Login';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/orders',
@@ -31,7 +32,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: Login,
+      redirect: 'login',
     },
   ],
 });
