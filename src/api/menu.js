@@ -1,8 +1,12 @@
 import request from '@/utils/request';
 import { toMap } from '@/utils/common';
 
-export const fetchMenu = () => request.get('restaurant/menu').then(res => ({
+const MENU_ENDPOINT = 'restaurant/menu';
+
+export const fetchMenu = () => request.get(MENU_ENDPOINT).then(res => ({
   items: toMap(res.data, 'id'),
 }));
 
-export const addItem = item => request.post('restaurant/menu', item).then(res => res.data);
+export const addItem = item => request.post(MENU_ENDPOINT, item).then(res => res.data);
+
+export const updateItem = item => request.put(MENU_ENDPOINT, item);

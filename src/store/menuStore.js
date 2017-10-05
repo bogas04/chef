@@ -1,5 +1,7 @@
 import Vue from 'vue';
-import { addItem } from '@/api';
+import { addItem, updateItem } from '@/api';
+
+const { log } = console;
 
 const store = {
   mutations: {
@@ -15,6 +17,15 @@ const store = {
         type: 'setMenuItem',
         item,
       });
+    },
+    async updateMenuItem({ commit }, item = {}) {
+      if (!item.id) return;
+
+      try {
+        await updateItem(item);
+      } catch (error) {
+        log('Error: Could not update item');
+      }
     },
   },
 };
