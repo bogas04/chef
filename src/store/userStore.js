@@ -22,7 +22,7 @@ const store = {
     },
   },
   actions: {
-    async attemptLogin({ commit }, credentials) {
+    async attemptLogin({ dispatch, commit }, credentials) {
       commit({
         type: 'setLoginStatus',
         loginStatus: LOGIN_STATUS.REQUEST,
@@ -30,6 +30,8 @@ const store = {
 
       try {
         const user = await login(credentials);
+
+        dispatch('fetchData');
 
         commit({
           type: 'setLoginStatus',

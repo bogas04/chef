@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 import AppHeader from '@/components/AppHeader';
 import { LOGIN_STATUS } from '@/constants';
 
@@ -17,20 +17,12 @@ export default {
   components: {
     AppHeader,
   },
-  mounted() {
-    this.fetchData();
-  },
   computed: {
     ...mapState({
       loggedIn(state) {
         return state.user.loginStatus === LOGIN_STATUS.SUCCESS;
       },
     }),
-  },
-  methods: {
-    ...mapActions([
-      'fetchData',
-    ]),
   },
   watch: {
     loggedIn(value) {
