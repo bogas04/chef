@@ -14,13 +14,9 @@
         </div>
       </div>
       <div class="order-meta">
-        <div class="table center">
+        <div class="table center" v-if="order.type === orderTypes.RESTAURANT">
           <app-icon name="dinner" width="24px" />
           <span>{{ order.table }}</span>
-        </div>
-        <div class="user center">
-          <app-icon name="user" width="24px" />
-          <span>Rick</span>
         </div>
       </div>
     </div>
@@ -51,11 +47,17 @@
 import Vue from 'vue';
 import { distanceInWordsToNow } from 'date-fns';
 import { Chip } from '@/components';
+import { ORDER_TYPES } from '@/constants';
 
 export default {
   props: ['order'],
   components: {
     Chip,
+  },
+  data() {
+    return {
+      orderTypes: ORDER_TYPES,
+    };
   },
   methods: {
     printOrder() {
@@ -97,6 +99,7 @@ export default {
 .order-info {
   display: flex;
   flex-direction: column;
+  min-height: 100px;
 }
 
 .title {

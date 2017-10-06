@@ -4,16 +4,19 @@
       <thead>
         <tr>
           <th>Items</th>
+          <th>Quantity</th>
           <th>Amount</th>
         </tr>
       </thead>
       <tr v-for="item in order.items" :key="item.id">
         <td>{{ item.title }}</td>
+        <td>{{ item.quantity }}</td>
         <td>{{ item.price }}</td>
       </tr>
       <tfoot>
         <tr>
           <td>Grand total</td>
+          <td></td>
           <td>{{ total }}</td>
         </tr>
       </tfoot>
@@ -33,12 +36,15 @@ export default {
         const order = find(state.orders, o => o.id === this.selectedOrder);
         return {
           ...order,
-          items: order.items.map(itemId => state.menu.items[itemId]),
+          items: order.items.map(item => ({
+            ...state.menu.items[item.itemId],
+            quantity: item.quantity,
+          })),
         };
       },
     }),
     total() {
-      return this.order.items.reduce((total, item) => total + item.price, 0);
+      return this.order.items.reduce((total, item) => total + (item.price * item.quantity), 0);
     },
   },
 };
