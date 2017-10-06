@@ -11,6 +11,11 @@ Vue.use(svgicon, {
   tagName: 'app-icon',
 });
 
+Vue.filter('snakeToString', (value) => {
+  const str = value.replace('_', ' ');
+  return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+});
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

@@ -10,7 +10,7 @@
         </div>
         <div class="inline">
           <chip>{{ order.status }}</chip>
-          <chip color='#1565C0'>{{ order.type }}</chip>
+          <chip color='#1565C0'>{{ order.type | snakeToString }}</chip>
         </div>
       </div>
       <div class="order-meta">

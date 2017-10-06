@@ -6,7 +6,7 @@
 
     <div class="order-info">
       <div class="type-control control">
-        <div :class="{ type, selected: type === selectedType }" v-for="type in types" :key="type" @click='selectedType = type'>{{ type.replace('_', ' ') }}</div>
+        <div :class="{ type, selected: type === selectedType }" v-for="type in types" :key="type" @click='selectedType = type'>{{ type | snakeToString }}</div>
       </div>
 
       <div class="table-control control" v-if="selectedType === types.RESTAURANT">
@@ -145,13 +145,8 @@ header>span {
   height: 48px;
   line-height: 48px;
   text-align: center;
-  border: 1px solid #E0E0E0;
-  text-transform: lowercase;
+  border: 1px solid #E0E0E0;  
   transition: all .3s cubic-bezier(.645, .045, .355, 1);
-}
-
-.type::first-letter {
-  text-transform: uppercase;
 }
 
 .type:first-child {
