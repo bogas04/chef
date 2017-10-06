@@ -20,7 +20,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { Button } from '@/components';
+import { AppButton } from '@/components';
 
 export default {
   data() {
@@ -30,7 +30,7 @@ export default {
     };
   },
   components: {
-    AppButton: Button,
+    AppButton,
   },
   methods: {
     login() {

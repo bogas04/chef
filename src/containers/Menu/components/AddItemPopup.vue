@@ -47,11 +47,11 @@ import { mapActions } from 'vuex';
 import mapValues from 'lodash/mapValues';
 import { MENU_ITEM_TAGS } from '@/constants';
 import { buildMenuItem } from '@/utils/order';
-import { Button } from '@/components';
+import { AppButton } from '@/components';
 
 export default {
   components: {
-    AppButton: Button,
+    AppButton,
   },
   data() {
     return {

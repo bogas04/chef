@@ -32,14 +32,14 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import { buildOrder } from '@/utils/order';
-import { Button } from '@/components';
+import { AppButton } from '@/components';
 import { ORDER_TYPES } from '@/constants';
 import Search from './Search';
 
 export default {
   components: {
     Search,
-    AppButton: Button,
+    AppButton,
   },
   data() {
     return {

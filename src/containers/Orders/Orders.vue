@@ -18,14 +18,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import { Button } from '@/components';
+import { AppButton } from '@/components';
 import { Order, CreateOrder, Bill } from './components';
 
 export default {
   name: 'Orders',
   components: {
     Order,
-    AppButton: Button,
+    AppButton,
     CreateOrder,
     Bill,
   },

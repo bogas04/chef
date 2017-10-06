@@ -21,13 +21,13 @@
 <script>
 import { mapState } from 'vuex';
 import groupBy from 'lodash/groupBy';
-import { Button, FloatingWindow } from '@/components';
+import { AppButton, FloatingWindow } from '@/components';
 import { Item, AddItemPopup } from './components';
 
 export default {
   components: {
     Item,
-    AppButton: Button,
+    AppButton,
     FloatingWindow,
     AddItemPopup,
   },

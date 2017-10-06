@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import { Button } from '@/components';
+import { AppButton } from '@/components';
 
 export default {
   props: ['reservation'],
   components: {
-    AppButton: Button,
+    AppButton,
   },
 };
 </script>
