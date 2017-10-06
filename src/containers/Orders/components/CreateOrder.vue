@@ -5,16 +5,14 @@
     </header>
 
     <div class="order-info">
-      <div class="table-control control">
+      <div class="type-control control">
+        <div :class="{ type, selected: type === selectedType }" v-for="type in types" :key="type" @click='selectedType = type'>{{ type.replace('_', ' ') }}</div>
+      </div>
+
+      <div class="table-control control" v-if="selectedType === types.RESTAURANT">
         <span>Table</span>
         <input type="number" v-model="table" />
       </div>
-
-      <div class="type-control control">
-        <div :class="{ type, selected: type === selectedType }" v-for="type in types" :key="type" @click='selectedType = type'>{{ type }}</div>
-      </div>
-
-      <hr class="divider" />
 
       <search :options="options" @selectItem="addToSelectedItems" />
 
@@ -139,6 +137,12 @@ header>span {
   line-height: 48px;
   text-align: center;
   border: 1px solid #E0E0E0;
+  text-transform: lowercase;
+  transition: all .3s cubic-bezier(.645, .045, .355, 1);
+}
+
+.type::first-letter {
+  text-transform: uppercase;
 }
 
 .type:first-child {
@@ -147,6 +151,11 @@ header>span {
 
 .type:last-child {
   border-radius: 0 4px 4px 0;
+}
+
+.type:hover {
+  color: #FF5722;
+  cursor: pointer;
 }
 
 .type.selected {
