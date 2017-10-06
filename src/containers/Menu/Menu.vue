@@ -1,7 +1,7 @@
 <template>
   <main class="menu">
     <div class="menu-header">
-      <app-button primary={true} @click.native="itemPopupVisible = true">Add Item</app-button>
+      <floating-button @click.native="itemPopupVisible = true" />
     </div>
     <div class="category-container" v-for="(items, category) in menu.categories" :key="category">
       <span class="category-header">{{ category }}</span>
@@ -21,13 +21,13 @@
 <script>
 import { mapState } from 'vuex';
 import groupBy from 'lodash/groupBy';
-import { AppButton, FloatingWindow } from '@/components';
+import { FloatingButton, FloatingWindow } from '@/components';
 import { Item, AddItemPopup } from './components';
 
 export default {
   components: {
     Item,
-    AppButton,
+    FloatingButton,
     FloatingWindow,
     AddItemPopup,
   },

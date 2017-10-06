@@ -1,8 +1,6 @@
 <template>
   <main class="orders">
-    <div class="orders-header">
-      <app-button primary={true} @click.native="orderPopupVisible = true">Create Order</app-button>
-    </div>
+    <floating-button @click.native="orderPopupVisible = true" />
 
     <bill :selectedOrder="selectedOrder" v-if="selectedOrder" />
 
@@ -18,14 +16,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import { AppButton } from '@/components';
+import { FloatingButton } from '@/components';
 import { Order, CreateOrder, Bill } from './components';
 
 export default {
   name: 'Orders',
   components: {
     Order,
-    AppButton,
+    FloatingButton,
     CreateOrder,
     Bill,
   },
@@ -57,11 +55,5 @@ export default {
 .order-container {
   display: flex;
   flex-wrap: wrap;
-}
-
-.orders-header {
-  display: flex;
-  flex-direction: row-reverse;
-  padding: 8px;
 }
 </style>
