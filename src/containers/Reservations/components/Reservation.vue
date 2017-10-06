@@ -13,7 +13,7 @@
     <div class="user-info">
       <div>
         <app-icon name="user" width="24px" />
-        <span>{{ reservation.user.name }}</span>
+        <span>{{ reservation.name }}</span>
       </div>
       <app-button primary='true'>confirm</app-button>
     </div>
