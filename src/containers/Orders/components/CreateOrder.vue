@@ -18,7 +18,10 @@
 
       <div class="items control">
         <span class="subheader" v-if="selectedItems.length">items</span>
-        <span class="item" v-for="itemId in selectedItems" :key="itemId">{{ menu.items[itemId].title }}</span>
+        <span class="item" v-for="item in selectedItems" :key="item.itemId">
+          {{ menu.items[item.itemId].title }}
+          <span class="item--quantity" v-if="item.quantity > 1">x {{ item.quantity }}</span>
+        </span>
       </div>
     </div>
 
@@ -54,7 +57,13 @@ export default {
       this.$emit('update:orderPopupVisible', false);
     },
     addToSelectedItems(id) {
-      this.selectedItems.push(id);
+      const itemIndex = this.selectedItems.findIndex(item => item.itemId === id);
+
+      if (itemIndex > -1) {
+        this.selectedItems[itemIndex].quantity += 1;
+      } else {
+        this.selectedItems.push({ itemId: id, quantity: 1 });
+      }
     },
     createOrder() {
       const order = buildOrder({
@@ -182,6 +191,11 @@ header>span {
 .item {
   font-size: 18px;
   padding: 4px 0;
+}
+
+.item--quantity {
+  color: green;
+  margin-left: 4px;
 }
 
 .subheader {

@@ -4,7 +4,9 @@
       <div class="order-meta">
         <div>
           <span class="title">#{{ order.number }}</span><br/>
-          <span>Placed <i>{{ time }}</i></span>
+          <span>Placed
+            <i>{{ time }}</i>
+          </span>
         </div>
         <div class="inline">
           <chip>{{ order.status }}</chip>
@@ -13,21 +15,23 @@
       </div>
       <div class="order-meta">
         <div class="table center">
-          <app-icon name="dinner" width="24px"/>
+          <app-icon name="dinner" width="24px" />
           <span>{{ order.table }}</span>
         </div>
         <div class="user center">
-          <app-icon name="user" width="24px"/>
+          <app-icon name="user" width="24px" />
           <span>Rick</span>
-        </div>      
+        </div>
       </div>
     </div>
-    
+
     <hr>
-    
+
     <div class="order-snippet">
       <span class="sub">Order</span>
-      <span class="order-item" v-for="item in order.items" :key="item.title">{{ item.title }}</span>
+      <span class="order-item" v-for="item in order.items" :key="item.title">{{ item.title }}
+        <span class="item--quantity" v-if="item.quantity > 1">x {{ item.quantity }}</span>
+      </span>
     </div>
 
     <div class="order-controls">
@@ -117,7 +121,7 @@ export default {
   color: #2E7D32;
 }
 
-.table > span {
+.table>span {
   margin-left: 2px;
 }
 
@@ -156,14 +160,16 @@ hr {
   cursor: pointer;
 }
 
-.control > span, .control > .svg-icon {
+.control>span,
+.control>.svg-icon {
   font-size: 12px;
   height: 16px;
   color: #757575;
   text-transform: uppercase;
 }
 
-.control:hover > span, .control:hover > .svg-icon {
+.control:hover>span,
+.control:hover>.svg-icon {
   color: rgb(21, 101, 192);
 }
 
@@ -177,5 +183,10 @@ hr {
 
 .order-item {
   padding: 2px 0;
+}
+
+.item--quantity {
+  color: green;
+  margin-left: 4px;
 }
 </style>

@@ -42,7 +42,10 @@ export default {
         return [...state.orders].map(order => ({
           ...order,
           user: state.users[order.user],
-          items: order.items.map(id => state.menu.items[id]),
+          items: order.items.map(item => ({
+            ...state.menu.items[item.itemId],
+            quantity: item.quantity,
+          })),
         }));
       },
     }),
