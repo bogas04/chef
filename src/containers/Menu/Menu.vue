@@ -6,7 +6,7 @@
     <div class="category-container" v-for="(items, category) in menu.categories" :key="category">
       <span class="category-header">{{ category }}</span>
       <div class="item-container">
-        <item v-for="item in items" :key="item.id" :item="item" @editItem="handleEdit" />
+        <item v-for="item in items" :key="item.id" :item="item" @click.native="handleEdit(item.id)" />
       </div>
     </div>
 

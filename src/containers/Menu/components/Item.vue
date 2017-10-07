@@ -3,14 +3,13 @@
     <div class="flex-column">
       <span class="item--title">{{ item.title }}</span>
       <span class="item--info">
-        <span>{{ item.description }}</span>	&#8226;
+        <span>{{ item.description }}</span> &#8226;
         <span>{{ item.price }}</span>
       </span>
       <div class="tag-container">
         <span class="tag" v-for="tag in selectedTags" :key="tag">{{ tag }}</span>
       </div>
     </div>
-    <app-icon class="edit-icon" name="edit" @click.native="editItem(item.id)" />
   </div>
 </template>
 
@@ -46,6 +45,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .flex-column {
@@ -60,20 +64,6 @@ export default {
 
 .item--info {
   font-size: 14px;
-}
-
-.edit-icon {
-  visibility: hidden;
-  color: #757575;
-}
-
-.menu-item:hover>.edit-icon {
-  visibility: visible;
-  cursor: pointer;
-}
-
-.edit-icon:hover {
-  color: #2962FF;
 }
 
 .tag {
