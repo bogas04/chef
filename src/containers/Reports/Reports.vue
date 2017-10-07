@@ -17,6 +17,16 @@
         <span class="report--number">{{ fulfilledOrders }}</span>
       </div>
     </div>
+    <div class="revenue-reports">
+      <div class="number-report">
+        <span class="report--title">Total Revenue</span>
+        <span class="report--number">&#8377; {{ totalRevenue | formatNumber }}</span>
+      </div>
+      <div class="number-report">
+        <span class="report--title">Footfall</span>
+        <span class="report--number">40</span>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -42,6 +52,7 @@ export default {
       'totalOrders',
       'openOrders',
       'fulfilledOrders',
+      'totalRevenue',
     ]),
   },
 };
@@ -50,7 +61,7 @@ export default {
 <style scoped>
 .reports {
   width: 100%;
-  padding-top: 4px; 
+  padding-top: 4px;
 }
 
 .reports-header {
@@ -58,9 +69,9 @@ export default {
   margin: 8px 0;
 }
 
-.number-reports {
+.number-reports, .revenue-reports {
   display: flex;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .number-report {

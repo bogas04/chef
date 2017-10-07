@@ -16,6 +16,8 @@ Vue.filter('snakeToString', (value) => {
   return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
 });
 
+Vue.filter('formatNumber', value => value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

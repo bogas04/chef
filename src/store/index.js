@@ -38,6 +38,16 @@ export default new Vuex.Store({
       state.orders = [];
     },
   },
+  getters: {
+    totalRevenue(state) {
+      // FIXME: Use sub-getter for order total?
+      return state.orders.reduce((totalAmount, order) => { // eslint-disable-line
+        const orderTotal = order.items.reduce((amount, item) =>
+          amount + (state.menu.items[item.itemId].price * item.quantity), 0);
+        return totalAmount + orderTotal;
+      }, 0);
+    },
+  },
   actions: {
     async fetchData({ commit }) {
       const [menu, orders, users, reservations] = await Promise.all([
