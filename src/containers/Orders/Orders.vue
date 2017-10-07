@@ -38,13 +38,13 @@ export default {
     return {
       orderPopupVisible: false,
       selectedOrder: null,
-      filterType: null,
+      filterType: ORDER_TYPES.RESTAURANT,
       orderTypes: [
         { title: 'restaurant', value: ORDER_TYPES.RESTAURANT },
         { title: 'take away', value: ORDER_TYPES.TAKE_AWAY },
         { title: 'delivery', value: ORDER_TYPES.DELIVERY },
       ],
-      filterStatus: null,
+      filterStatus: ORDER_STATUS.INIT,
       orderStatues: [
         { title: 'open', value: ORDER_STATUS.INIT },
         { title: 'fulfilled', value: ORDER_STATUS.FULFILLED },
@@ -58,7 +58,7 @@ export default {
           if (order.type !== this.filterType) return false;
         }
         if (this.filterStatus) {
-          if (order.staus !== this.filterStatus) return false;
+          if (order.status !== this.filterStatus) return false;
         }
         return true;
       });
