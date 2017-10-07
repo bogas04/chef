@@ -33,11 +33,15 @@
     <div class="order-controls">
       <div class="control" @click="printOrder">
         <app-icon name="credit-card" width="30px" />
-        <span>Payment</span>
+        <span>Bill</span>
       </div>
       <div class="control">
         <app-icon name="edit" width="30px" />
         <span>Edit</span>
+      </div>
+      <div class="control" v-if="!isFulfilled" @click="fulfillOrder">
+        <app-icon name="user" width="30px" />
+        <span>Fullfill</span>
       </div>
     </div>
   </div>
@@ -45,9 +49,10 @@
 
 <script>
 import Vue from 'vue';
+import { mapMutations } from 'vuex';
 import { distanceInWordsToNow } from 'date-fns';
 import { Chip } from '@/components';
-import { ORDER_TYPES } from '@/constants';
+import { ORDER_TYPES, ORDER_STATUS } from '@/constants';
 
 export default {
   props: ['order'],
@@ -64,10 +69,17 @@ export default {
       this.$emit('update:selectOrder', this.order.id);
       Vue.nextTick(window.print);
     },
+    fulfillOrder() {
+      this.updateOrderStatus({ id: this.order.id, status: ORDER_STATUS.FULFILLED });
+    },
+    ...mapMutations(['updateOrderStatus']),
   },
   computed: {
     time() {
       return distanceInWordsToNow(this.order.timestamp);
+    },
+    isFulfilled() {
+      return this.order.status === ORDER_STATUS.FULFILLED;
     },
   },
 };
