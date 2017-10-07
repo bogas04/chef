@@ -1,6 +1,6 @@
 <template>
   <main class="orders">
-    <bill :selectedOrder="selectedOrder" v-if="selectedOrder" />
+    <invoice :selectedOrder="selectedOrder" v-if="selectedOrder" />
 
     <div class="orders-header">
       <button-select :options="orderTypes" :option.sync="filterType" />
@@ -23,7 +23,7 @@
 import { mapState } from 'vuex';
 import { FloatingButton, ButtonSelect } from '@/components';
 import { ORDER_TYPES, ORDER_STATUS } from '@/constants';
-import { Order, CreateOrder, Bill } from './components';
+import { Order, CreateOrder, Invoice } from './components';
 
 export default {
   name: 'Orders',
@@ -31,7 +31,7 @@ export default {
     Order,
     FloatingButton,
     CreateOrder,
-    Bill,
+    Invoice,
     ButtonSelect,
   },
   data() {
