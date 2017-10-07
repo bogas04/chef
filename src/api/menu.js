@@ -9,4 +9,4 @@ export const fetchMenu = () => request.get(MENU_ENDPOINT).then(res => ({
 
 export const addItem = item => request.post(MENU_ENDPOINT, item).then(res => res.data);
 
-export const updateItem = item => request.put(MENU_ENDPOINT, item);
+export const updateItem = item => request.put(`${MENU_ENDPOINT}/${item.id}`, item);

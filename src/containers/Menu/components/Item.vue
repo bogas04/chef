@@ -6,7 +6,7 @@
         <span class="tag" v-for="tag in selectedTags" :key="tag">{{ tag }}</span>
       </div>
     </div>
-    <app-icon class="edit-icon" name="edit" />
+    <app-icon class="edit-icon" name="edit" @click.native="editItem(item.id)" />
   </div>
 </template>
 
@@ -17,6 +17,11 @@ import keys from 'lodash/keys';
 
 export default {
   props: ['item'],
+  methods: {
+    editItem(itemId) {
+      this.$emit('editItem', itemId);
+    },
+  },
   computed: {
     selectedTags() {
       const tags = this.item.tags || {};
@@ -56,6 +61,11 @@ export default {
 
 .menu-item:hover>.edit-icon {
   visibility: visible;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: #2962FF;
 }
 
 .tag {

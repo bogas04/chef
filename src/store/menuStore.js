@@ -23,6 +23,11 @@ const store = {
 
       try {
         await updateItem(item);
+
+        commit({
+          type: 'setMenuItem',
+          item,
+        });
       } catch (error) {
         log('Error: Could not update item');
       }

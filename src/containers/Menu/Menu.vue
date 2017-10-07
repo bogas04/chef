@@ -6,13 +6,16 @@
     <div class="category-container" v-for="(items, category) in menu.categories" :key="category">
       <span class="category-header">{{ category }}</span>
       <div class="item-container">
-        <item v-for="item in items" :key="item.id" :item="item" />
+        <item v-for="item in items" :key="item.id" :item="item" @editItem="handleEdit" />
       </div>
     </div>
 
     <transition name="slide-fade">
-      <floating-window v-if="itemPopupVisible">
-        <add-item-popup :itemPopupVisible.sync="itemPopupVisible" />
+      <floating-window v-if="newItemPopupVisible">
+        <add-item-popup :itemPopupVisible.sync="newItemPopupVisible" />
+      </floating-window>
+      <floating-window v-if="editItemPopupVisible">
+        <edit-item-popup :itemPopupVisible.sync="editItemPopupVisible" :itemId="editItemId" />
       </floating-window>
     </transition>
   </main>
@@ -22,7 +25,7 @@
 import { mapState } from 'vuex';
 import groupBy from 'lodash/groupBy';
 import { FloatingButton, FloatingWindow } from '@/components';
-import { Item, AddItemPopup } from './components';
+import { Item, AddItemPopup, EditItemPopup } from './components';
 
 export default {
   components: {
@@ -30,11 +33,20 @@ export default {
     FloatingButton,
     FloatingWindow,
     AddItemPopup,
+    EditItemPopup,
   },
   data() {
     return {
-      itemPopupVisible: false,
+      newItemPopupVisible: false,
+      editItemPopupVisible: false,
+      editItemId: null,
     };
+  },
+  methods: {
+    handleEdit(itemId) {
+      this.editItemPopupVisible = true;
+      this.editItemId = itemId;
+    },
   },
   computed: {
     ...mapState({
