@@ -1,5 +1,8 @@
 <template>
   <main class="reports">
+    <div class="reports-header">
+      <button-select :options="options" />
+    </div>
     <div class="number-reports">
       <div class="number-report">
         <span class="report--title">Total orders</span>
@@ -19,8 +22,21 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { ButtonSelect } from '@/components';
 
 export default {
+  components: {
+    ButtonSelect,
+  },
+  data() {
+    return {
+      options: [
+        { title: 'Today', value: 'today' },
+        { title: 'Last week', value: 'week' },
+        { title: 'Last month', value: 'month' },
+      ],
+    };
+  },
   computed: {
     ...mapGetters([
       'totalOrders',
@@ -35,6 +51,11 @@ export default {
 .reports {
   width: 100%;
   padding-top: 4px; 
+}
+
+.reports-header {
+  display: flex;
+  margin: 8px 0;
 }
 
 .number-reports {

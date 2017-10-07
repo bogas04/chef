@@ -2,6 +2,7 @@ import { addOrder, updateOrder } from '@/api';
 import { ORDER_STATUS } from '@/constants';
 
 const store = {
+  state: [],
   mutations: {
     addOrder(state, { order }) {
       state.push(order);
