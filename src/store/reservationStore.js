@@ -1,6 +1,7 @@
 import { addReservation } from '@/api';
 
 const store = {
+  state: [],
   mutations: {
     addReservation(state, { reservation }) {
       state.push(reservation);

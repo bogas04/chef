@@ -18,10 +18,15 @@
 
       <div class="items control">
         <span class="subheader" v-if="selectedItems.length">items</span>
-        <span class="item" v-for="item in selectedItems" :key="item.itemId">
-          {{ menu.items[item.itemId].title }}
-          <span class="item--quantity" v-if="item.quantity > 1">x {{ item.quantity }}</span>
-        </span>
+        <div class="item" v-for="item in selectedItems" :key="item.itemId">
+          <span class="item--title">{{ menu.items[item.itemId].title }}</span>
+
+          <div class="quantity-control">
+            <div class="quantity--decrease" @click="decreaseQuantity(item.itemId)">-</div>
+            <span class="quantity--amount">{{ item.quantity }}</span>
+            <div class="quantity--increase" @click="increaseQuantity(item.itemId)">+</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -75,6 +80,23 @@ export default {
 
       this.addOrder(order);
       this.dismiss();
+    },
+    increaseQuantity(id) {
+      const itemIndex = this.selectedItems.findIndex(item => item.itemId === id);
+      if (itemIndex > -1) {
+        this.selectedItems[itemIndex].quantity += 1;
+      }
+    },
+    decreaseQuantity(id) {
+      const itemIndex = this.selectedItems.findIndex(item => item.itemId === id);
+      if (itemIndex > -1) {
+        const quantity = this.selectedItems[itemIndex].quantity;
+        if (quantity === 1) {
+          this.selectedItems.splice(itemIndex, 1);
+        } else {
+          this.selectedItems[itemIndex].quantity -= 1;
+        }
+      }
     },
     ...mapActions([
       'addOrder',
@@ -145,7 +167,7 @@ header>span {
   height: 48px;
   line-height: 48px;
   text-align: center;
-  border: 1px solid #E0E0E0;  
+  border: 1px solid #E0E0E0;
   transition: all .3s cubic-bezier(.645, .045, .355, 1);
 }
 
@@ -186,11 +208,42 @@ header>span {
 .item {
   font-size: 18px;
   padding: 4px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.item--quantity {
-  color: green;
-  margin-left: 4px;
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity--amount {
+  width: 24px;
+  text-align: center;
+}
+
+.quantity--decrease,
+.quantity--increase {
+  padding: 4px;
+  width: 16px;
+  text-align: center;
+  background: #448AFF;
+  cursor: pointer;
+  color: #fff;
+}
+
+.quantity--decrease:hover,
+.quantity--increase:hover {
+  background: #2962FF;
+}
+
+.quantity--decrease {
+  border-radius: 4px 0 0 4px;
+}
+
+.quantity--increase {
+  border-radius: 0 4px 4px 0;
 }
 
 .subheader {

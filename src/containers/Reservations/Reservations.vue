@@ -10,7 +10,7 @@
       <floating-window v-if="reservationPopupVisible">
         <reservation-popup :reservationPopupVisible.sync="reservationPopupVisible" />
       </floating-window>
-    </transition>>
+    </transition>
   </main>
 </template>
 
