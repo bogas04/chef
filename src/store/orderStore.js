@@ -1,4 +1,5 @@
 import { addOrder, updateOrder } from '@/api';
+import { ORDER_STATUS } from '@/constants';
 
 const store = {
   mutations: {
@@ -9,6 +10,11 @@ const store = {
       const orderIndex = state.findIndex(o => o.id === order.id);
       state[orderIndex].status = order.status; // eslint-disable-line
     },
+  },
+  getters: {
+    totalOrders: state => state.length,
+    openOrders: state => state.filter(order => order.status === ORDER_STATUS.INIT).length,
+    fulfilledOrders: state => state.filter(order => order.status === ORDER_STATUS.FULFILLED).length,
   },
   actions: {
     async addOrder({ commit }, _order) {
