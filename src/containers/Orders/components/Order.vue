@@ -49,7 +49,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 import { distanceInWordsToNow } from 'date-fns';
 import { Chip } from '@/components';
 import { ORDER_TYPES, ORDER_STATUS } from '@/constants';
@@ -70,9 +70,9 @@ export default {
       Vue.nextTick(window.print);
     },
     fulfillOrder() {
-      this.updateOrderStatus({ id: this.order.id, status: ORDER_STATUS.FULFILLED });
+      this.updateOrder({ id: this.order.id, status: ORDER_STATUS.FULFILLED });
     },
-    ...mapMutations(['updateOrderStatus']),
+    ...mapActions(['updateOrder']),
   },
   computed: {
     time() {

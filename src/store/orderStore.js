@@ -1,4 +1,4 @@
-import { addOrder } from '@/api';
+import { addOrder, updateOrder } from '@/api';
 
 const store = {
   mutations: {
@@ -18,6 +18,16 @@ const store = {
         type: 'addOrder',
         order,
       });
+    },
+    updateOrder({ commit }, order) {
+      commit({
+        type: 'updateOrderStatus',
+        id: order.id,
+        status: order.status,
+      });
+
+      // FIXME: Rollback in case of failure
+      updateOrder(order);
     },
   },
 };
