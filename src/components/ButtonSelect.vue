@@ -51,6 +51,7 @@ export default {
 
 .option:hover {
   color: #FF5722;
+  border-color: #FF5722;
   cursor: pointer;
 }
 

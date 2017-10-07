@@ -2,7 +2,7 @@
   <header class="app-header">
     <div class="tab-container">
       <router-link v-for="tab in tabs" :key="tab.title" :to="tab.title" exact-active-class="active-tab">
-        <div class="tab">
+        <div :class="{ tab, disabled: tab.disabled }">
           <app-icon class="icon" :name='tab.icon' width="24" height="24" />
           <span>{{ tab.title }}</span>
         </div>
@@ -24,10 +24,10 @@ export default {
       tabs: [
         { title: 'orders', icon: 'groceries' },
         { title: 'menu', icon: 'vegetables' },
-        { title: 'tables', icon: 'store' },
+        { title: 'tables', icon: 'store', disabled: true },
         { title: 'reservations', icon: 'restaurant' },
-        { title: 'delivery', icon: 'food-stall' },
-        { title: 'inventory', icon: 'stew' },
+        { title: 'delivery', icon: 'food-stall', disabled: true },
+        { title: 'inventory', icon: 'stew', disabled: true },
         { title: 'reports', icon: 'salad' },
       ],
       active: 'orders',
@@ -47,7 +47,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .tab-container {
@@ -72,7 +72,7 @@ export default {
 }
 
 .logout-control:hover {
-  border-color: rgb(21, 101, 192); 
+  border-color: rgb(21, 101, 192);
   color: rgb(21, 101, 192);
 }
 
@@ -93,7 +93,12 @@ a {
   color: #FF6E40;
 }
 
-.tab > img {
+.tab.disabled:hover {
+  color: #424242;
+  cursor: default;
+}
+
+.tab>img {
   margin-right: 8px;
 }
 
