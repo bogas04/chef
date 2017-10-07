@@ -4,6 +4,7 @@ import Orders from '@/containers/Orders/Orders';
 import Menu from '@/containers/Menu/Menu';
 import Reservations from '@/containers/Reservations/Reservations';
 import Login from '@/containers/Login/Login';
+import Reports from '@/containers/Reports/Reports';
 
 Vue.use(Router);
 
@@ -26,13 +27,18 @@ export default new Router({
       component: Reservations,
     },
     {
+      path: '/reports',
+      name: 'Reports',
+      component: Reports,
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login,
     },
     {
       path: '*',
-      redirect: 'login',
+      redirect: 'orders',
     },
   ],
 });
