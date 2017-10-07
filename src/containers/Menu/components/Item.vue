@@ -1,7 +1,11 @@
 <template>
   <div class="menu-item">
     <div class="flex-column">
-      <span class="item-title">{{ item.title }}</span>
+      <span class="item--title">{{ item.title }}</span>
+      <span class="item--info">
+        <span>{{ item.description }}</span>	&#8226;
+        <span>{{ item.price }}</span>
+      </span>
       <div class="tag-container">
         <span class="tag" v-for="tag in selectedTags" :key="tag">{{ tag }}</span>
       </div>
@@ -49,9 +53,13 @@ export default {
   flex-direction: column;
 }
 
-.item-title {
+.item--title {
   font-size: 20px;
   margin-bottom: 4px;
+}
+
+.item--info {
+  font-size: 14px;
 }
 
 .edit-icon {

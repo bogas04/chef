@@ -1,7 +1,7 @@
 <template>
   <main class="menu">
     <div class="menu-header">
-      <floating-button @click.native="itemPopupVisible = true" />
+      <floating-button @click.native="newItemPopupVisible = true" />
     </div>
     <div class="category-container" v-for="(items, category) in menu.categories" :key="category">
       <span class="category-header">{{ category }}</span>
