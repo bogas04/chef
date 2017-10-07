@@ -11,10 +11,7 @@ Vue.use(Vuex);
 const defaultStore = {
   user: {},
   orders: [],
-  menu: {
-    items: {},
-    categories: [],
-  },
+  menu: {},
   reservations: [],
   users: {},
 };

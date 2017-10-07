@@ -4,6 +4,10 @@ import { addItem, updateItem } from '@/api';
 const { log } = console;
 
 const store = {
+  state: {
+    items: {},
+    categories: [],
+  },
   mutations: {
     setMenuItem(state, { item }) {
       Vue.set(state.items, item.id, item);
