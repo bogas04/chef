@@ -1,7 +1,7 @@
 <template>
   <main class="reservations">
     <div class="reservation-list">
-      <reservation v-for="reservation in reservations" :key="reservation.id" :reservation="reservation" />
+      <reservation v-for="reservation in sortedReservatins" :key="reservation.id" :reservation="reservation" />
     </div>
     
     <floating-button @click.native="reservationPopupVisible = true" />
@@ -33,6 +33,9 @@ export default {
     };
   },
   computed: {
+    sortedReservatins() {
+      return this.reservations.sort((a, b) => a.time > b.time);
+    },
     ...mapState({
       reservations(state) {
         return state.reservations.map(res => ({
