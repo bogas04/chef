@@ -7,26 +7,27 @@
     <div class="form-container">
       <div class="control-container">
         <label for="name">Name</label>
-        <input type="text" class="control full" />
+        <input type="text" class="control full" v-model="name" />
       </div>
       <div class="control-container inline">
         <label for="time">Time</label>
-        <input type="time" class="control full" />
+        <input type="time" class="control full time" v-model="time" />
       </div>
       <div class="control-container inline">
         <label for="people">People</label>
-        <input type="number" class="control full" />
+        <input type="number" class="control full" v-model="number" />
       </div>
     </div>
 
     <div class="button-container">
-      <app-button primary={true} @click.native="addItem">Add</app-button>
+      <app-button primary={true} @click.native="create">Add</app-button>
       <app-button @click.native="dismiss">Discard</app-button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { AppButton } from '@/components';
 
 export default {
@@ -35,12 +36,31 @@ export default {
   },
   data() {
     return {
+      name: '',
+      time: '',
+      number: 0,
     };
   },
   methods: {
+    create() {
+      const time = new Date();
+      const [hours, minutes] = this.time.split(':');
+
+      time.setHours(hours);
+      time.setMinutes(minutes);
+
+      this.addReservation({
+        name: this.name,
+        people: this.number,
+        time,
+      });
+
+      this.dismiss();
+    },
     dismiss() {
       this.$emit('update:reservationPopupVisible', false);
     },
+    ...mapActions(['addReservation']),
   },
 };
 </script>
@@ -98,6 +118,10 @@ export default {
 .control-container.inline .control {
   width: 15%;
   text-align: center;
+}
+
+.control-container.inline .control.time {
+  width: 20%;
 }
 
 .tag-container {

@@ -37,7 +37,7 @@ export default {
       reservations(state) {
         return state.reservations.map(res => ({
           ...res,
-          time: format(res.time, 'hh:MM aa'),
+          time: format(res.time, 'hh:mm aa'),
         }));
       },
     }),

@@ -15,7 +15,7 @@
         <app-icon name="user" width="24px" />
         <span>{{ reservation.name }}</span>
       </div>
-      <app-button primary='true'>confirm</app-button>
+      <app-button primary='true' v-if="!confirmed" @click.native="confirmed = true">confirm</app-button>
     </div>
   </div>
 </template>
@@ -27,6 +27,11 @@ export default {
   props: ['reservation'],
   components: {
     AppButton,
+  },
+  data() {
+    return {
+      confirmed: false,
+    };
   },
 };
 </script>
