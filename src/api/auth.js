@@ -7,3 +7,5 @@ export const getUserFromSession = () => request.get('apprentices').then(res => r
 
 // TODO: Implement sign up
 export const signup = credentials => credentials;
+
+export const logout = () => request.get('auth/logout').then(res => res.data);

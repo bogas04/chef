@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { login, getUserFromSession } from '@/api';
+import { login, getUserFromSession, logout } from '@/api';
 import { LOGIN_STATUS } from '@/constants';
 import log from '@/utils/log';
 
@@ -60,6 +60,8 @@ const store = {
       }
     },
     async logout({ commit }) {
+      await logout();
+
       commit({
         type: 'setLoginStatus',
         loginStatus: LOGIN_STATUS.LOGGED_OUT,
