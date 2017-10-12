@@ -11,6 +11,7 @@
 import { mapState, mapActions } from 'vuex';
 import AppHeader from '@/components/AppHeader';
 import { LOGIN_STATUS } from '@/constants';
+import log from '@/utils/log';
 
 export default {
   name: 'app',
@@ -21,7 +22,8 @@ export default {
     if (!this.loggedIn) {
       this.$router.replace('login');
       this.getUser()
-      .then(this.fetchData);
+        .then(() => log('Session present'))
+        .catch(() => log('Session absent'));
     }
   },
   computed: {
@@ -37,6 +39,7 @@ export default {
   watch: {
     loggedIn(value) {
       if (value) {
+        this.fetchData();
         this.$router.replace('orders');
       } else {
         this.$router.replace('login');

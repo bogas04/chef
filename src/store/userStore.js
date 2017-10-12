@@ -32,8 +32,6 @@ const store = {
       try {
         const user = await login(credentials);
 
-        dispatch('fetchData');
-
         commit({
           type: 'setLoginStatus',
           loginStatus: LOGIN_STATUS.SUCCESS,
@@ -55,8 +53,11 @@ const store = {
           loginStatus: LOGIN_STATUS.SUCCESS,
           user,
         });
+
+        return Promise.resolve();
       } catch (error) {
         log('Could not login from session');
+        return Promise.reject();
       }
     },
     async logout({ commit }) {
