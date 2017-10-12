@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchMenu, fetchOrders, fetchUsers, fetchReservations } from '@/api';
+import { fetchUsers, getRestaurant } from '@/api';
+import { toMap } from '@/utils/common';
 import menuStore from './menuStore';
 import orderStore from './orderStore';
 import reservationStore from './reservationStore';
@@ -27,10 +28,12 @@ export default new Vuex.Store({
   },
   mutations: {
     setData(state, payload) {
-      state.menu = payload.menu;
-      state.orders = payload.orders;
+      state.menu = {
+        items: toMap(payload.restaurant.menu, 'id'),
+      };
+      state.orders = payload.restaurant.orders;
+      state.reservations = payload.restaurant.reservations;
       state.users = payload.users;
-      state.reservations = payload.reservations;
     },
     clearData(state) {
       state.menu = {};
@@ -41,28 +44,28 @@ export default new Vuex.Store({
   getters: {
     totalRevenue(state) {
       // FIXME: Use sub-getter for order total?
-      return state.orders.reduce((totalAmount, order) => { // eslint-disable-line
-        const orderTotal = order.items.reduce((amount, item) =>
-          amount + (state.menu.items[item.itemId].price * item.quantity), 0);
+      return state.orders.reduce((totalAmount, order) => {
+        // eslint-disable-line
+        const orderTotal = order.items.reduce(
+          (amount, item) =>
+            amount + (state.menu.items[item.itemId].price * item.quantity),
+          0,
+        );
         return totalAmount + orderTotal;
       }, 0);
     },
   },
   actions: {
     async fetchData({ commit }) {
-      const [menu, orders, users, reservations] = await Promise.all([
-        fetchMenu(),
-        fetchOrders(),
+      const [restaurant, users] = await Promise.all([
+        getRestaurant(),
         fetchUsers(),
-        fetchReservations(),
       ]);
 
       commit({
         type: 'setData',
-        menu,
-        orders,
+        restaurant,
         users,
-        reservations,
       });
     },
   },

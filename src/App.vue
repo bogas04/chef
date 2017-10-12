@@ -19,6 +19,7 @@ export default {
   },
   created() {
     if (!this.loggedIn) {
+      this.$router.replace('login');
       this.getUser()
       .then(this.fetchData);
     }
