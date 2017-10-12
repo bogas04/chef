@@ -11,7 +11,7 @@ export default {
   props: ['options'],
   data() {
     return {
-      selectedOption: null,
+      selectedOption: this.options[0].value,
     };
   },
   methods: {
