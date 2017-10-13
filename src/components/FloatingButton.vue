@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .add-button {
   position: absolute;
   bottom: 32px;

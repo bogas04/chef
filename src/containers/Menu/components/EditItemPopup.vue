@@ -62,7 +62,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .edit-item-container {
   display: flex;
   flex-direction: column;

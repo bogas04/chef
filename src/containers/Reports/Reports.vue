@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .reports {
   width: 100%;
   padding-top: 4px;

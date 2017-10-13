@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .chip {
   color: #fff;
   font-size: 12px;

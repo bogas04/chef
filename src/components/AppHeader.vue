@@ -39,7 +39,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "~styles/colors.scss";
 .app-header {
   width: 100%;
   height: 56px;

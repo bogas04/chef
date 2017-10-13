@@ -88,7 +88,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .add-item-container {
   display: flex;
   flex-direction: column;

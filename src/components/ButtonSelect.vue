@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .button-select {
   display: flex;
   margin: 0 8px;

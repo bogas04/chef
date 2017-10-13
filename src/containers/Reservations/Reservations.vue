@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .reservation-list {
   margin: 8px;
   display: flex;

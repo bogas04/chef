@@ -114,7 +114,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .create-order {
   display: flex;
   flex-direction: column;

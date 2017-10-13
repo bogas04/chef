@@ -85,7 +85,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .order {
   width: 280px;
   height: 360px;

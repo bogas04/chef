@@ -36,7 +36,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .reservation {
   background: #fff;
   padding: 8px 12px;

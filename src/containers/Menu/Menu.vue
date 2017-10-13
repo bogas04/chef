@@ -60,7 +60,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .menu-header {
   padding: 8px;
   display: flex;
