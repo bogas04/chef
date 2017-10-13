@@ -20,7 +20,6 @@ export default {
   },
   created() {
     if (!this.loggedIn) {
-      this.$router.replace('login');
       this.getUser()
         .then(() => log('Session present'))
         .catch(() => log('Session absent'));
@@ -49,13 +48,29 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
-* {
+$primary-color-dark:   #E64A19;
+$primary-color:        #FF5722;
+$primary-color-light:  #FFCCBC;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FF9800;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+html {
+  box-shadow: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
-  box-shadow: border-box;
+  box-sizing: inherit;
   user-select: none;
 }
 
@@ -79,7 +94,7 @@ body {
 }
 
 .slide-fade-enter,
-.slide-fade-leave-to {
+.slide-fade-l eave-to {
   opacity: 0;
 }
 
