@@ -23,6 +23,10 @@
         <span class="report--number">&#8377; {{ totalRevenue | formatNumber }}</span>
       </div>
       <div class="number-report">
+        <span class="report--title">Reservations</span>
+        <span class="report--number">{{ totalReservations }}</span>
+      </div>
+      <div class="number-report">
         <span class="report--title">Footfall</span>
         <span class="report--number">40</span>
       </div>
@@ -53,6 +57,7 @@ export default {
       'openOrders',
       'fulfilledOrders',
       'totalRevenue',
+      'totalReservations',
     ]),
   },
 };

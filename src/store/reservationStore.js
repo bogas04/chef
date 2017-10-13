@@ -7,6 +7,11 @@ const store = {
       state.push(reservation);
     },
   },
+  getters: {
+    totalReservations(state) {
+      return state.length;
+    },
+  },
   actions: {
     async addReservation({ commit }, _reservation) {
       const reservation = await addReservation(_reservation);
