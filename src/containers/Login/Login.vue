@@ -78,7 +78,7 @@ export default {
 .control {
   height: 48px;
   box-sizing: border-box;
-  border: 1px solid #BDBDBD;
+  border: 1px solid $divider-color;
   border-radius: 4px;
   outline: none;
   font-size: 20px;  

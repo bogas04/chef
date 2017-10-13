@@ -143,7 +143,7 @@ export default {
 }
 
 .user {
-  color: #2e2e2e;
+  color: $primary-text-color;
 }
 
 hr {
@@ -181,7 +181,7 @@ hr {
 .control>.svg-icon {
   font-size: 12px;
   height: 16px;
-  color: #757575;
+  color: $secondary-text-color;
   text-transform: uppercase;
 }
 

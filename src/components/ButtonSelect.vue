@@ -40,7 +40,7 @@ export default {
   text-transform: capitalize;
   text-align: center;
   transition: all .3s cubic-bezier(.645, .045, .355, 1);
-  border: 1px solid #BDBDBD;
+  border: 1px solid $divider-color;
 }
 
 .option:first-child {

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 @import 'font';
+@import 'colors';
 
 html {
   box-shadow: border-box;
@@ -16,7 +17,7 @@ html {
 }
 
 body {
-  background: #EEEEEE;
+  background: $background-color;
 }
 
 #app {

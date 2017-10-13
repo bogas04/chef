@@ -38,6 +38,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~styles/colors.scss';
+
 .search-container {
   display: flex;
 }
@@ -48,7 +50,7 @@ export default {
   margin: 12px;
   padding: 4px 12px;
   border-radius: 4px;
-  border: 1px solid #BDBDBD;
+  border: 1px solid $divider-color;
   font-size: 16px;
 }
 

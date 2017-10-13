@@ -94,7 +94,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import '~styles/colors.scss';
+
 .invoice {
   width: 400px;
   min-height: 400px;
@@ -130,12 +132,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #BDBDBD;
+  border-bottom: 1px solid $divider-color;
 }
 
 .invoice__header--title {
   text-transform: uppercase;
-  color: #757575;
+  color: $secondary-text-color;
   font-weight: bold;
 }
 
@@ -162,7 +164,7 @@ export default {
   padding: 18px 0;
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid #BDBDBD;
+  border-bottom: 1px solid $divider-color;
 }
 
 .order__nugget {
@@ -175,7 +177,7 @@ export default {
 }
 
 .info--title {
-  color: #757575;
+  color: $secondary-text-color;
 }
 
 .order__details {
@@ -188,7 +190,7 @@ export default {
   font-weight: normal;
   text-transform: uppercase;
   font-size: 14px;
-  color: #757575;
+  color: $secondary-text-color;
 }
 
 .order-info--heading:first-child,

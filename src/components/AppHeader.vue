@@ -65,11 +65,11 @@ export default {
 
 .logout-control {
   padding: 6px 12px;
-  color: #bdbdbd;
+  color: $divider-color;
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  border: 1px solid #bdbdbd;
+  border: 1px solid $divider-color;
   border-radius: 4px;
 }
 

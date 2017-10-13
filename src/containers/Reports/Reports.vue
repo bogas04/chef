@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~styles/colors.scss';
+
 .reports {
   width: 100%;
   padding-top: 4px;
@@ -82,13 +84,13 @@ export default {
   align-items: center;
   background: #fff;
   padding: 12px;
-  border: 1px solid #ededed;
+  border: 1px solid $divider-color;
 }
 
 .report--title {
   text-transform: uppercase;
   font-size: 14px;
-  color: #BDBDBD;
+  color: $gray-color;
 }
 
 .report--number {

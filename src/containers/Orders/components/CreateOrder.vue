@@ -249,7 +249,7 @@ header>span {
 }
 
 .subheader {
-  color: #B71C1C;
+  color: $primary-color-dark;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;

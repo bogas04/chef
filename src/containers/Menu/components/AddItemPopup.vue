@@ -153,12 +153,12 @@ export default {
 
 .tag {
   font-size: 14px;
-  border: 1px solid #ededed;
+  border: 1px solid $background-color;
   border-radius: 4px;
   padding: 4px 8px;
   margin-right: 4px;
   margin-bottom: 4px;
-  color: #9E9E9E;
+  color: $gray-color;
   cursor: pointer;
   user-select: none;
 }

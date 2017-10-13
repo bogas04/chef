@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~styles/colors.scss';
+
 .reservation {
   background: #fff;
   padding: 8px 12px;
@@ -64,7 +66,7 @@ export default {
 
 .label-title {
   text-transform: uppercase;
-  color: #9B9B9B;
+  color: $divider-color;
   font-size: 12px;
   font-weight: 800;
 }
