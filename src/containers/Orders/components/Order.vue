@@ -118,7 +118,7 @@ export default {
 
 .title {
   color: #616161;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .inline {
@@ -179,7 +179,7 @@ hr {
 
 .control>span,
 .control>.svg-icon {
-  font-size: 12px;
+  font-size: 0.75rem;
   height: 16px;
   color: $secondary-text-color;
   text-transform: uppercase;
@@ -193,7 +193,7 @@ hr {
 .sub {
   text-transform: uppercase;
   color: $primary-color-dark;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 12px;
 }

@@ -22,7 +22,7 @@ export default {
 <style scoped lang="scss">
 .chip {
   color: #fff;
-  font-size: 12px;
+  font-size: 0.75rem;
   padding: 4px 12px;
   margin: 4px;
   max-width: fit-content;

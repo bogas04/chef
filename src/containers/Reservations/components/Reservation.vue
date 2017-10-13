@@ -67,19 +67,19 @@ export default {
 .label-title {
   text-transform: uppercase;
   color: $divider-color;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 
 .label-info {
   margin-top: 4px;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 100;
 }
 
 .user-info {
   height: 36px;
-  font-size: 20px;
+  font-size: 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

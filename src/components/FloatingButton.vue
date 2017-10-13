@@ -11,7 +11,7 @@
   position: absolute;
   bottom: 32px;
   right: 32px;
-  font-size: 32px;
+  font-size: 2rem;
   width: 56px;
   height: 56px;
   color: #fff;

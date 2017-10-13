@@ -145,7 +145,7 @@ header>span {
 
 .order-info {
   flex-grow: 1;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .table-control {
@@ -161,7 +161,7 @@ header>span {
 
 .type-control {
   display: flex;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .type {
@@ -198,7 +198,7 @@ header>span {
 .table-control>input {
   height: 30px;
   width: 48px;
-  font-size: 20px;
+  font-size: 1.25rem;
   text-align: center;
 }
 
@@ -208,7 +208,7 @@ header>span {
 }
 
 .item {
-  font-size: 18px;
+  font-size: 1.125rem;
   padding: 4px 0;
   display: flex;
   justify-content: space-between;
@@ -250,7 +250,7 @@ header>span {
 
 .subheader {
   color: $primary-color-dark;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 8px;

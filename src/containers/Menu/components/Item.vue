@@ -60,16 +60,16 @@ export default {
 }
 
 .item--title {
-  font-size: 20px;
+  font-size: 1.25rem;
   margin-bottom: 4px;
 }
 
 .item--info {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .tag {
-  font-size: 10px;
+  font-size: 0.625rem;
   border-radius: 4px;
   padding: 4px 8px;
   margin-right: 4px;

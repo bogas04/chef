@@ -72,7 +72,7 @@ export default {
 .control-container {
   padding: 4px;
   margin-bottom: 8px;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .control {
@@ -81,7 +81,7 @@ export default {
   border: 1px solid $divider-color;
   border-radius: 4px;
   outline: none;
-  font-size: 20px;  
+  font-size: 1.25rem;  
   padding: 0 12px;
 }
 
@@ -91,7 +91,7 @@ export default {
 }
 
 .btn {
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: capitalize;
 }
 

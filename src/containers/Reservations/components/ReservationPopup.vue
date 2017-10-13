@@ -107,7 +107,7 @@ export default {
   box-sizing: border-box;
   border: 1px solid #ededed;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
   outline: none;
   padding: 0 12px;
 }

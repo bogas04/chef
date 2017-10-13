@@ -130,7 +130,7 @@ export default {
   box-sizing: border-box;
   border: 1px solid #ededed;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
   outline: none;
   padding: 0 12px;
 }
@@ -152,7 +152,7 @@ export default {
 }
 
 .tag {
-  font-size: 14px;
+  font-size: 0.875rem;
   border: 1px solid $background-color;
   border-radius: 4px;
   padding: 4px 8px;

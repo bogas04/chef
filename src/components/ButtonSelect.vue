@@ -36,7 +36,7 @@ export default {
   flex-grow: 1;
   height: 36px;
   line-height: 36px;
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: capitalize;
   text-align: center;
   transition: all .3s cubic-bezier(.645, .045, .355, 1);

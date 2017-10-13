@@ -51,7 +51,7 @@ export default {
   padding: 4px 12px;
   border-radius: 4px;
   border: 1px solid $divider-color;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .results {

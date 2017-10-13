@@ -66,7 +66,7 @@ export default {
 .logout-control {
   padding: 6px 12px;
   color: $divider-color;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-transform: uppercase;
   cursor: pointer;
   border: 1px solid $divider-color;

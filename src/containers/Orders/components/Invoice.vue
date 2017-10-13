@@ -150,13 +150,13 @@ export default {
 }
 
 .restaurant__title {
-  font-size: 18px;
+  font-size: 1.125rem;
   text-transform: uppercase;
   font-weight: light;
 }
 
 .restaurant__address {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #2e2e2e;
 }
 
@@ -172,7 +172,7 @@ export default {
   padding: 4px;
   width: 50%;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-align: center;
 }
 
@@ -189,7 +189,7 @@ export default {
 .order-info--heading {
   font-weight: normal;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: $secondary-text-color;
 }
 
