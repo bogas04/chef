@@ -41,6 +41,7 @@ export default {
 
 <style scoped lang="scss">
 @import "~styles/colors.scss";
+
 .app-header {
   width: 100%;
   height: 56px;
@@ -91,7 +92,7 @@ a {
 }
 
 .tab:hover {
-  color: #FF6E40;
+  color: $primary-color;
 }
 
 .tab.disabled:hover {
@@ -108,7 +109,7 @@ a {
 }
 
 .active-tab .tab {
-  color: #FF5722;
-  border-bottom: 1px solid #FF5722;
+  color: $primary-color;
+  border-bottom: 1px solid $primary-color;
 }
 </style>

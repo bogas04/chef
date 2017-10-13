@@ -35,6 +35,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .menu-item {
   width: 240px;
   height: 56px;
@@ -72,7 +74,7 @@ export default {
   padding: 4px 8px;
   margin-right: 4px;
   margin-bottom: 4px;
-  background: #F4511E;
+  background: $primary-color;
   color: #fff;
 }
 </style>

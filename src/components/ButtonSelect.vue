@@ -24,6 +24,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .button-select {
   display: flex;
   margin: 0 8px;
@@ -50,14 +52,14 @@ export default {
 }
 
 .option:hover {
-  color: #FF5722;
-  border-color: #FF5722;
+  color: $primary-color;
+  border-color: $primary-color;
   cursor: pointer;
 }
 
 .option.selected {
   color: #fff;
-  background: #FF5722;
-  border-color: #FF5722;
+  background: $primary-color;
+  border-color: $primary-color;
 }
 </style>

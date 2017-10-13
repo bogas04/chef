@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .reservation-container {
   display: flex;
   flex-direction: column;
@@ -75,7 +77,7 @@ export default {
 .header {
   height: 48px;
   padding: 0 12px;
-  background: #F4511E;
+  background: $primary-color;
   color: #fff;
   margin-bottom: 24px;
 }

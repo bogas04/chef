@@ -89,6 +89,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .add-item-container {
   display: flex;
   flex-direction: column;
@@ -98,7 +100,7 @@ export default {
 .header {
   height: 48px;
   padding: 0 12px;
-  background: #F4511E;
+  background: $primary-color;
   color: #fff;
   margin-bottom: 24px;
 }
@@ -164,8 +166,8 @@ export default {
 .tag.selected {
   border: none;
   color: #fff;
-  background: #F4511E;
-  border: 1px solid #F4511E;
+  background: $primary-color;
+  border: 1px solid $primary-color;
 }
 
 .button-container {

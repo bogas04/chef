@@ -42,10 +42,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .page {
   height: 100%;
   width: 100%;
-  background: #FF5722;
+  background: $primary-color;
   display: flex;
   justify-content: center;
   align-items: center;

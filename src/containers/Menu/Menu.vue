@@ -61,6 +61,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .menu-header {
   padding: 8px;
   display: flex;
@@ -74,7 +76,7 @@ export default {
 .category-header {
   margin-left: 8px;
   text-transform: uppercase;
-  color: #FF5722;
+  color: $primary-color;
 }
 
 .item-container {

@@ -115,6 +115,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .create-order {
   display: flex;
   flex-direction: column;
@@ -130,7 +132,7 @@ export default {
 
 header {
   height: 36px;
-  background: #FF5722;
+  background: $primary-color;
   color: #fff;
   padding: 4px;
   border-radius: 2px;
@@ -180,13 +182,13 @@ header>span {
 }
 
 .type:hover {
-  color: #FF5722;
+  color: $primary-color;
   cursor: pointer;
 }
 
 .type.selected {
   color: #fff;
-  background: #FF5722;
+  background: $primary-color;
 }
 
 .divider {

@@ -5,6 +5,8 @@
 </template>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .add-button {
   position: absolute;
   bottom: 32px;
@@ -15,7 +17,7 @@
   color: #fff;
   border-radius: 50%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: #FF6E40;
+  background: $primary-color;
   display: flex;
   justify-content: center;
   align-items: center;

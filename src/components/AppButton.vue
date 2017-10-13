@@ -11,6 +11,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .btn {
   font-family: 'Lato';
   text-transform: uppercase;
@@ -25,7 +27,7 @@ export default {
 .btn.primary {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   color: #fff;
-  background: #FF5722;
+  background: $primary-color;
 }
 
 .btn.disabled {

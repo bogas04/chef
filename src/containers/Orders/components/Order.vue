@@ -86,6 +86,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~styles/colors.scss";
+
 .order {
   width: 280px;
   height: 360px;
@@ -133,7 +135,7 @@ export default {
 }
 
 .table {
-  color: #2E7D32;
+  color: $success-color;
 }
 
 .table>span {
@@ -185,12 +187,12 @@ hr {
 
 .control:hover>span,
 .control:hover>.svg-icon {
-  color: rgb(21, 101, 192);
+  color: $info-color;
 }
 
 .sub {
   text-transform: uppercase;
-  color: #D32F2F;
+  color: $primary-color-dark;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -201,7 +203,7 @@ hr {
 }
 
 .item--quantity {
-  color: green;
+  color: $success-color;
   margin-left: 4px;
 }
 </style>
