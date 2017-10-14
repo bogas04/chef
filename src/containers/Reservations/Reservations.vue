@@ -4,7 +4,7 @@
       <reservation v-for="reservation in sortedReservatins" :key="reservation.id" :reservation="reservation" />
     </div>
     
-    <floating-button @click.native="reservationPopupVisible = true" />
+    <floating-button @click.native="reservationPopupVisible = true" tooltip="Add Reservation" />
 
     <transition name="slide-fade">
       <floating-window v-if="reservationPopupVisible">

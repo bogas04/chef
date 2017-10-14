@@ -11,7 +11,7 @@
       <order v-for="order in filteredOrders" :key="order.id" :order="order" :selectOrder.sync="selectedOrder" />
     </div>
 
-    <floating-button @click.native="orderPopupVisible = true" />
+    <floating-button @click.native="orderPopupVisible = true" tooltip="Add Order"/>
 
     <transition name="slide-fade">
       <create-order v-if="orderPopupVisible" :orderPopupVisible.sync="orderPopupVisible" />
