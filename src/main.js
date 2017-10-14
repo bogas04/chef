@@ -4,6 +4,7 @@ import Vue from 'vue';
 import * as svgicon from 'vue-svgicon';
 import VeeValidate from 'vee-validate';
 import '@/components/icons';
+import VeeValidate from 'vee-validate';
 import App from './App';
 import router from './router';
 import store from './store';

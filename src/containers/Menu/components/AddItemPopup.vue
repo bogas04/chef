@@ -7,19 +7,24 @@
     <div class="form-container">
       <div class="control-container">
         <label for="title">Title</label>
-        <input type="text" class="control full" v-model="title" />
+        <input type="text" v-validate="'required'" name="title" class="control full" v-model="title" />
+        <h6 class="error" v-show="errors.has('title')">Provide a title</h6>
       </div>
       <div class="control-container">
         <label for="category">Category</label>
-        <input type="text" class="control full" v-model="category" />
+        <input type="text" v-validate="'required'" class="control full" v-model="category" name="category" />
+        <h6 class="error" v-show="errors.has('category')">Provide a category</h6>
       </div>
       <div class="control-container">
         <label for="description">Description</label>
         <input type="text" class="control full" v-model="description" />
       </div>
       <div class="control-container inline">
-        <label for="price">Price</label>
-        <input type="number" class="control" v-model.number="price" />
+        <div>
+          <label for="price">Price</label>
+          <h6 class="error" v-show="errors.has('price')">Provide a price</h6>
+        </div>
+        <input type="number" v-validate="'required'" class="control" v-model.number="price" name="price" />
       </div>
       <div class="control-container">
         <label for="tags">Tags</label>
@@ -35,7 +40,7 @@
     </div>
 
     <div class="button-container">
-      <app-button primary={true} @click.native="addItem">Add</app-button>
+      <app-button primary={true} @click.native="addItem" v-show="!errors.items.length">Add</app-button>
       <app-button @click.native="dismiss">Discard</app-button>
     </div>
   </div>
@@ -97,6 +102,10 @@ export default {
   height: 100%;
 }
 
+.error {
+  color: $danger-color;
+}
+
 .header {
   height: 48px;
   padding: 0 12px;
@@ -117,6 +126,7 @@ export default {
 .control-container {
   padding: 4px;
   margin-bottom: 8px;
+  min-height: 80px;
 }
 
 .control-container.inline {
