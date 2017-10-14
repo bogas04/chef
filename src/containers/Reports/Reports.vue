@@ -84,12 +84,13 @@ export default {
 .number-report {
   display: flex;
   flex-grow: 1;
+  min-width: 144px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #fff;
-  padding: 12px;
-  border: 1px solid $divider-color;
+  padding: 12px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .report--title {
