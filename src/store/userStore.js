@@ -37,12 +37,15 @@ const store = {
           loginStatus: LOGIN_STATUS.SUCCESS,
           user,
         });
+
+        return Promise.resolve();
       } catch (e) {
         commit({
           type: 'setLoginStatus',
           loginStatus: LOGIN_STATUS.FAILED,
         });
       }
+      return Promise.reject();
     },
     async getUser({ commit }) {
       try {
