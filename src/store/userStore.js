@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { login, getUserFromSession, logout } from '@/api';
+import { login, getUserFromSession, logout, register } from '@/api';
 import { LOGIN_STATUS } from '@/constants';
 import log from '@/utils/log';
 
@@ -46,6 +46,15 @@ const store = {
         });
       }
       return Promise.reject();
+    },
+    async register({ commit }, credentials) {
+      try {
+        await register(credentials);
+        return Promise.resolve();
+      } catch (error) {
+        log(error);
+        return Promise.reject();
+      }
     },
     async getUser({ commit }) {
       try {

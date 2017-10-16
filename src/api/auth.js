@@ -5,7 +5,6 @@ export const login = ({ username, password }) =>
 
 export const getUserFromSession = () => request.get('apprentices').then(res => res.data);
 
-// TODO: Implement sign up
-export const signup = credentials => credentials;
+export const register = credentials => request.post('auth/register', credentials).then(res => res.data);
 
 export const logout = () => request.get('auth/logout').then(res => res.data);

@@ -29,18 +29,20 @@
       <div class="form-container">
         <div class="control">
           <label for="" class="control__label">Restaurant title</label>
-          <input type="text" class="control__input" name="restaurantTitle" v-validate="'required'" v-model="restaurantTitle"
-          />
+          <input type="text" class="control__input" name="restaurantTitle" v-validate="'required'"
+            v-model="restaurantTitle" />
           <h5 class="error" v-show="errors.has('restaurantTitle')">Provide name</h5>
         </div>
-        <app-button :class="{ disabled: errors.items.length }" primary='true' @click.native="register">Finish</app-button>
+        <app-button :class="{ disabled: errors.items.length }" primary='true' @click.native="attemptRegistration">Finish</app-button>
       </div>
     </section>
   </main>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { AppButton } from '@/components';
+import log from '@/utils/log';
 import { RegistrationHeader } from './components';
 
 export default {
@@ -61,8 +63,18 @@ export default {
     proceedSection() {
       this.activeSectionIndex += 1;
     },
-    register() {
+    attemptRegistration() {
+      if (!this.errors.items.length) {
+        this.register({
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          restaurantTitle: this.restaurantTitle,
+        })
+          .then(() => log('Registration successful'));
+      }
     },
+    ...mapActions(['register']),
   },
 };
 </script>
