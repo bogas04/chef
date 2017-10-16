@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <app-header v-if="loggedIn" />
     <transition name="slide-fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -39,9 +38,9 @@ export default {
     loggedIn(value) {
       if (value) {
         this.fetchData();
-        this.$router.replace('orders');
+        this.$router.replace('/app/orders');
       } else {
-        this.$router.replace('login');
+        this.$router.replace('/login');
       }
     },
   },

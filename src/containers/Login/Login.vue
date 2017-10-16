@@ -4,16 +4,19 @@
       <div class="form-container">
         <div class="control">
           <label class="control__label">Username</label>
-          <input type="text" class="control__input" v-model="username" name="username" v-validate="'required'" />
+          <input type="text" class="control__input" v-model="username" name="username" v-validate="'required'"
+          />
           <h6 class="error" v-show="errors.has('username')">Provide username</h6>
         </div>
         <div class="control">
           <label class="control__label">Password</label>
-          <input type="password" class="control__input" v-model="password" name="password" v-validate="'required'" @keyup.enter="login" />
+          <input type="password" class="control__input" v-model="password" name="password"
+            v-validate="'required'" @keyup.enter="login" />
           <h6 class="error" v-show="errors.has('password')">Provide password</h6>
         </div>
         <div>
-          <app-button :class="{ disabled: errors.items.length || attemptingLogin }" primary={true} @click.native="login">{{ attemptingLogin ? 'Signing in' : 'Sign in'}}</app-button>
+          <app-button :class="{ disabled: errors.items.length || attemptingLogin }" primary={true}
+            @click.native="login">{{ attemptingLogin ? 'Signing in...' : 'Sign in'}}</app-button>
         </div>
       </div>
     </div>
@@ -121,8 +124,8 @@ export default {
   background: $primary-color-dark;
 }
 
-.btn.loading {
+.btn.disabled {
   pointer-events: none;
-  background: $primary-color-light;
+  opacity: 0.75;
 }
 </style>
