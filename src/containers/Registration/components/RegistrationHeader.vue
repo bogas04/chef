@@ -15,14 +15,13 @@
 
 <script>
 export default {
+  props: ['activeSectionIndex'],
   data() {
     return {
       sections: [
         { title: 'About', subtitle: 'Tell us about yourself' },
         { title: 'Restaurant', subtitle: 'About the restaurant' },
-        { title: 'Delivery', subtitle: 'Do you deliver?' },
       ],
-      activeSectionIndex: 0,
     };
   },
 };
