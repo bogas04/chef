@@ -1,5 +1,11 @@
 <template>
   <main class="page">
+    <div class="header">
+      <h1 class="title">
+        <app-icon class="icon" name='stew' width="48" height="48" /> Chef
+      </h1>
+      <h2 class="subtitle">The modern restaurant dashboard</h2>
+    </div>
     <div class="container">
       <div class="form-container">
         <div class="control">
@@ -15,7 +21,7 @@
           <h6 class="error" v-show="errors.has('password')">Provide password</h6>
         </div>
         <div>
-          <app-button :class="{ disabled: errors.items.length || attemptingLogin }" primary={true}
+          <app-button :class="{ inactive: errors.items.length || attemptingLogin }" primary={true}
             @click.native="login">{{ attemptingLogin ? 'Signing in...' : 'Sign in'}}</app-button>
         </div>
       </div>
@@ -65,8 +71,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background: linear-gradient( rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)), url('./login-bg.jpg');
   background-size: cover;
+}
+
+.header {
+  position: absolute;
+  top: 100px;
+
+  .title,
+  .subtitle {
+    color: $primary-color-text;
+    text-align: center;
+  }
 }
 
 .container {
@@ -124,7 +142,7 @@ export default {
   background: $primary-color-dark;
 }
 
-.btn.disabled {
+.btn.inactive {
   pointer-events: none;
   opacity: 0.75;
 }
