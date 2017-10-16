@@ -18,6 +18,7 @@
     "date-fns": "^1.28.5",
     "fuse.js": "^3.1.0",
     "lodash": "^4.17.4",
+    "vee-validate": "^2.0.0-rc.19",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
     "vue-svgicon": "^1.2.6",

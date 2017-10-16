@@ -4,14 +4,16 @@
       <div class="form-container">
         <div class="control">
           <label class="control__label">Username</label>
-          <input type="text" class="control__input" v-model="username" />
+          <input type="text" class="control__input" v-model="username" name="username" v-validate="'required'" />
+          <h6 class="error" v-show="errors.has('username')">Provide username</h6>
         </div>
         <div class="control">
           <label class="control__label">Password</label>
-          <input type="password" class="control__input" v-model="password" @keyup.enter="login" />
+          <input type="password" class="control__input" v-model="password" name="password" v-validate="'required'" @keyup.enter="login" />
+          <h6 class="error" v-show="errors.has('password')">Provide password</h6>
         </div>
-        <div class="control">
-          <app-button :class="{ loading: attemptingLogin }" primary={true} @click.native="login">{{ attemptingLogin ? 'Signing in' : 'Sign in'}}</app-button>
+        <div>
+          <app-button :class="{ disabled: errors.items.length || attemptingLogin }" primary={true} @click.native="login">{{ attemptingLogin ? 'Signing in' : 'Sign in'}}</app-button>
         </div>
       </div>
     </div>
@@ -60,7 +62,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient( rgba(0,0,0,.25), rgba(0,0,0,.25) ), url('./login-bg.jpg');
+  background: linear-gradient( rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)), url('./login-bg.jpg');
   background-size: cover;
 }
 
@@ -78,9 +80,15 @@ export default {
   flex-direction: column;
 }
 
+.error {
+  color: $danger-color;
+  font-style: italic;
+}
+
 .control {
-  margin-bottom: 20px;
   font-size: 1.25rem;
+  min-height: 96px;
+  margin-bottom: 8px;
 
   .control__label {
     display: block;
@@ -97,24 +105,24 @@ export default {
     font-size: 1.25rem;
     padding-left: 8px;
   }
+}
 
-  .btn {
-    width: 100%;
-    font-size: 1.25rem;
-    height: 48px;
-    text-transform: capitalize;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  }
+.btn {
+  width: 100%;
+  font-size: 1.25rem;
+  height: 48px;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
 
-  .btn:hover {
-    background: $primary-color-dark;
-  }
+.btn:hover {
+  background: $primary-color-dark;
+}
 
-  .btn.loading {
-    pointer-events: none;
-    background: $primary-color-light;
-  }
+.btn.loading {
+  pointer-events: none;
+  background: $primary-color-light;
 }
 </style>
