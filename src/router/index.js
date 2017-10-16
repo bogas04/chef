@@ -4,6 +4,7 @@ import Orders from '@/containers/Orders/Orders';
 import Menu from '@/containers/Menu/Menu';
 import Reservations from '@/containers/Reservations/Reservations';
 import Login from '@/containers/Login/Login';
+import Registration from '@/containers/Registration/Registration';
 import Reports from '@/containers/Reports/Reports';
 import Dashboard from '@/containers/Dashboard';
 
@@ -42,6 +43,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {
+      path: '/registration',
+      name: 'Registration',
+      component: Registration,
     },
     {
       path: '*',
