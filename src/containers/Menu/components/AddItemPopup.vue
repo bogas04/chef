@@ -7,13 +7,13 @@
     <div class="form-container">
       <div class="control-container">
         <label for="title">Title</label>
-        <input type="text" v-validate="'required'" name="title" class="control full" v-model="title" />
-        <h6 class="error" v-show="errors.has('title')">Provide a title</h6>
+        <input type="text" v-validate="'required'" name="title" :class="{ control: true, full: true, error: errors.has('title') }" v-model="title" />
+        <h5 class="error" v-show="errors.has('title')">Provide a title</h5>
       </div>
       <div class="control-container">
         <label for="category">Category</label>
-        <input type="text" v-validate="'required'" class="control full" v-model="category" name="category" />
-        <h6 class="error" v-show="errors.has('category')">Provide a category</h6>
+        <input type="text" v-validate="'required'" :class="{ control: true, full: true, error: errors.has('category') }" v-model="category" name="category" />
+        <h5 class="error" v-show="errors.has('category')">Provide a category</h5>
       </div>
       <div class="control-container">
         <label for="description">Description</label>
@@ -22,7 +22,7 @@
       <div class="control-container inline">
         <div>
           <label for="price">Price</label>
-          <h6 class="error" v-show="errors.has('price')">Provide a price</h6>
+          <h5 class="error" v-show="errors.has('price')">Provide a price</h5>
         </div>
         <input type="number" v-validate="'required'" class="control" v-model.number="price" name="price" />
       </div>
@@ -104,6 +104,7 @@ export default {
 
 .error {
   color: $danger-color;
+  font-weight: 400;
 }
 
 .header {
@@ -138,11 +139,15 @@ export default {
 .control {
   height: 32px;
   box-sizing: border-box;
-  border: 1px solid #ededed;
+  border: 1px solid $divider-color;
   border-radius: 4px;
   font-size: 1rem;
   outline: none;
   padding: 0 12px;
+}
+
+.control.error {
+  border-color: $danger-color;
 }
 
 .control.full {
