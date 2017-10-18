@@ -29,6 +29,10 @@
           <app-button :class="{ inactive: errors.items.length || attemptingLogin }" primary={true}
             @click.native="login">{{ attemptingLogin ? 'Signing in...' : 'Sign in'}}</app-button>
         </div>
+        <div class="other-options">
+          <router-link class="option__link" to="forgot-password">Forgot password?</router-link>
+          <router-link class="option__link" to="registration">Register</router-link>
+        </div>
       </div>
     </div>
   </main>
@@ -69,6 +73,7 @@ export default {
 
 <style scoped lang="scss">
 @import "~styles/colors.scss";
+@import "~styles/underline_mixin.scss";
 
 .page {
   height: 100%;
@@ -100,6 +105,7 @@ export default {
 .container {
   width: 400px;
   padding: 32px 24px;
+  padding-bottom: 0;
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 6px;
@@ -165,5 +171,19 @@ export default {
 .btn.inactive {
   pointer-events: none;
   opacity: 0.75;
+}
+
+.other-options {
+  display: flex;
+  height: 64px;
+  align-items: center;
+
+  .option__link {
+    @include link-underline(#fff,
+    #0D47A1,
+    #0D47A1);
+    flex-basis: 50%;
+    text-align: center;
+  }
 }
 </style>
