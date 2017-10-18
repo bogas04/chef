@@ -11,7 +11,7 @@
 
       <div class="table-control control" v-if="selectedType === types.RESTAURANT">
         <span>Table</span>
-        <input type="number" v-model="table" />
+        <input class="control__input" type="number" v-model="table" />
       </div>
 
       <search :options="options" @selectItem="addToSelectedItems" />
@@ -157,6 +157,12 @@ header>span {
 .control {
   padding: 4px 12px;
   margin: 12px 0;
+}
+
+.control__input {
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid $divider-color;
 }
 
 .type-control {
