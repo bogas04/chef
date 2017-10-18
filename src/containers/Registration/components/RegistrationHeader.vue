@@ -33,7 +33,7 @@ export default {
 .tab {
   display: flex;
   align-items: center;
-  flex-basis: 20%;
+  flex-basis: 10%;
   border-right: 1px solid rgba(0, 0, 0, 0.15);
   padding: 0 16px;
 
@@ -53,11 +53,12 @@ export default {
   }
 
   .tab__title {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .tab__subtitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: $secondary-text-color;
   }
 }
 
@@ -66,9 +67,12 @@ export default {
     background: $primary-color;
   }
 
-  .tab__title,
   .tab__subtitle {
     color: $primary-color;
+  }
+
+  .tab__title {
+    color: $primary-color-dark;
   }
 }
 

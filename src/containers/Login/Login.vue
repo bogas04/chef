@@ -30,8 +30,12 @@
             @click.native="login">{{ attemptingLogin ? 'Signing in...' : 'Sign in'}}</app-button>
         </div>
         <div class="other-options">
-          <router-link class="option__link" to="forgot-password">Forgot password?</router-link>
-          <router-link class="option__link" to="registration">Register</router-link>
+          <div class="option">
+            <router-link class="option__link" to="forgot-password">Forgot password?</router-link>
+          </div>
+          <div class="option">
+            <router-link class="option__link" to="registration">Register</router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -178,12 +182,15 @@ export default {
   height: 64px;
   align-items: center;
 
-  .option__link {
-    @include link-underline(#fff,
-    #0D47A1,
-    #0D47A1);
+  .option {
     flex-basis: 50%;
     text-align: center;
+
+    .option__link {
+      @include link-underline(#fff,
+      #0D47A1,
+      #0D47A1);
+    }
   }
 }
 </style>

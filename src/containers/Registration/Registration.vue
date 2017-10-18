@@ -33,6 +33,12 @@
             v-model="restaurantTitle" />
           <h5 class="error" v-show="errors.has('restaurantTitle')">Provide name</h5>
         </div>
+        <div class="control">
+          <label for="" class="control__label">Tax amount</label>
+          <input type="number" class="control__input" name="restaurantTax" v-validate="'required'"
+            v-model="restaurantTax" />
+          <h5 class="error" v-show="errors.has('restaurantTax')">Provide tax details</h5>
+        </div>
         <app-button :class="{ disabled: errors.items.length }" primary='true' @click.native="attemptRegistration">Finish</app-button>
       </div>
     </section>
@@ -42,7 +48,6 @@
 <script>
 import { mapActions } from 'vuex';
 import { AppButton } from '@/components';
-import log from '@/utils/log';
 import { RegistrationHeader } from './components';
 
 export default {
@@ -56,6 +61,7 @@ export default {
       email: '',
       password: '',
       restaurantTitle: '',
+      restaurantTax: 12,
       activeSectionIndex: 0,
     };
   },
@@ -65,13 +71,17 @@ export default {
     },
     attemptRegistration() {
       if (!this.errors.items.length) {
-        this.register({
+        const credentials = {
           username: this.username,
           email: this.email,
           password: this.password,
           restaurantTitle: this.restaurantTitle,
-        })
-          .then(() => log('Registration successful'));
+        };
+
+        this.register(credentials)
+          .then(() => {
+            this.$router.replace('login');
+          });
       }
     },
     ...mapActions(['register']),
