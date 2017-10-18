@@ -10,14 +10,20 @@
       <div class="form-container">
         <div class="control">
           <label class="control__label">Username</label>
-          <input type="text" class="control__input" v-model="username" name="username" v-validate="'required'"
-          />
+          <div :class="{ input: true, error: errors.has('username') }">
+            <app-icon name="user" class="icon" width="24" height="24"></app-icon>
+            <input type="text" class="control__input" v-model="username" name="username" v-validate="'required'"
+            />
+          </div>
           <h6 class="error" v-show="errors.has('username')">Provide username</h6>
         </div>
         <div class="control">
           <label class="control__label">Password</label>
-          <input type="password" class="control__input" v-model="password" name="password"
-            v-validate="'required'" @keyup.enter="login" />
+          <div :class="{ input: true, error: errors.has('password') }">
+            <app-icon name="password" class="icon" width="24" height="24"></app-icon>
+            <input type="password" class="control__input" v-model="password" name="password"
+              v-validate="'required'" @keyup.enter="login" />
+          </div>
           <h6 class="error" v-show="errors.has('password')">Provide password</h6>
         </div>
         <div>
@@ -103,7 +109,7 @@ export default {
 
 .error {
   color: $danger-color;
-  font-style: italic;
+  font-weight: 400;
 }
 
 .control {
@@ -116,15 +122,24 @@ export default {
     margin-bottom: 4px;
   }
 
-  .control__input {
+  .input {
     height: 48px;
     width: 100%;
-    box-sizing: border-box;
     border: 1px solid $divider-color;
     border-radius: 4px;
-    outline: none;
-    font-size: 1.25rem;
     padding-left: 8px;
+
+    .control__input {
+      outline: none;
+      height: 100%;
+      font-size: 1.25rem;
+      padding-left: 8px;
+      border: none;
+    }
+  }
+
+  .input.error {
+    border-color: $danger-color;
   }
 }
 
@@ -138,7 +153,7 @@ export default {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.btn:hover {
+.btn.primary:hover {
   background: $primary-color-dark;
 }
 
