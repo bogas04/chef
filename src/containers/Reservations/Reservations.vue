@@ -1,8 +1,10 @@
 <template>
   <main class="reservations">
-    <div class="reservation-list">
-      <reservation v-for="reservation in sortedReservatins" :key="reservation.id" :reservation="reservation" />
+    <div class="reservation-list" v-if="sortedReservations.length > 0">
+      <reservation v-for="reservation in sortedReservations" :key="reservation.id" :reservation="reservation" />
     </div>
+
+    <empty-placeholder v-else icon="restaurant" title="No Reservations" subtitle="Click the add reservation button to add a new reservation" />
     
     <floating-button @click.native="reservationPopupVisible = true" tooltip="Add Reservation" />
 
@@ -17,7 +19,7 @@
 <script>
 import { mapState } from 'vuex';
 import format from 'date-fns/format';
-import { FloatingButton, FloatingWindow } from '@/components';
+import { FloatingButton, FloatingWindow, EmptyPlaceholder } from '@/components';
 import { Reservation, ReservationPopup } from './components';
 
 export default {
@@ -26,6 +28,7 @@ export default {
     FloatingButton,
     FloatingWindow,
     ReservationPopup,
+    EmptyPlaceholder,
   },
   data() {
     return {
@@ -33,7 +36,7 @@ export default {
     };
   },
   computed: {
-    sortedReservatins() {
+    sortedReservations() {
       return this.reservations.sort((a, b) => a.time > b.time);
     },
     ...mapState({

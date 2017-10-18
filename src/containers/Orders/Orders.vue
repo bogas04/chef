@@ -2,26 +2,30 @@
   <main class="orders">
     <invoice :selectedOrder="selectedOrder" v-if="selectedOrder" />
 
-    <div class="orders-header">
+    <div class="orders-header" v-if="orders.length > 0">
       <button-select :options="orderTypes" :option.sync="filterType" />
       <button-select :options="orderStatues" :option.sync="filterStatus" />
     </div>
 
-    <div class="order-container">
-      <order v-for="order in filteredOrders" :key="order.id" :order="order" :selectOrder.sync="selectedOrder" />
+    <div class="order-container" v-if="filteredOrders.length > 0">
+      <order v-for="order in filteredOrders" :key="order.id" :order="order" :selectOrder.sync="selectedOrder"
+      />
     </div>
 
-    <floating-button @click.native="orderPopupVisible = true" tooltip="Add Order"/>
+    <empty-placeholder v-else icon="salad" title="No Orders" subtitle="Click the add order button to add a new order" />
+
+    <floating-button @click.native="orderPopupVisible = true" tooltip="Add Order" />
 
     <transition name="slide-fade">
-      <create-order v-if="orderPopupVisible" :orderPopupVisible.sync="orderPopupVisible" />
+      <create-order v-if="orderPopupVisible" :orderPopupVisible.sync="orderPopupVisible"
+      />
     </transition>
   </main>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { FloatingButton, ButtonSelect } from '@/components';
+import { FloatingButton, ButtonSelect, EmptyPlaceholder } from '@/components';
 import { ORDER_TYPES, ORDER_STATUS } from '@/constants';
 import { Order, CreateOrder, Invoice } from './components';
 
@@ -33,6 +37,7 @@ export default {
     CreateOrder,
     Invoice,
     ButtonSelect,
+    EmptyPlaceholder,
   },
   data() {
     return {
