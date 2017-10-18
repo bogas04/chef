@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchUsers, getRestaurant } from '@/api';
+import { getRestaurant } from '@/api';
 import { toMap } from '@/utils/common';
 import menuStore from './menuStore';
 import orderStore from './orderStore';
@@ -14,7 +14,8 @@ const defaultStore = {
   orders: [],
   menu: {},
   reservations: [],
-  users: {},
+  percentageTax: 12,
+  address: '220, Baker street',
 };
 
 /* eslint-disable no-param-reassign */
@@ -33,7 +34,7 @@ export default new Vuex.Store({
       };
       state.orders = payload.restaurant.orders;
       state.reservations = payload.restaurant.reservations;
-      state.users = payload.users;
+      state.title = payload.restaurant.title;
     },
     clearData(state) {
       state.menu = {};
@@ -57,15 +58,11 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchData({ commit }) {
-      const [restaurant, users] = await Promise.all([
-        getRestaurant(),
-        fetchUsers(),
-      ]);
+      const restaurant = await getRestaurant();
 
       commit({
         type: 'setData',
         restaurant,
-        users,
       });
     },
   },

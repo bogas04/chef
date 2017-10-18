@@ -4,25 +4,25 @@
       <span class="invoice__header--title">invoice</span>
     </header>
     <section class="invoice__restaurant-info">
-      <span class="restaurant__title">Smoke House Deli</span>
-      <span class="restaurant__address">1209, 100 Feet Road, Indiranagar </span>
+      <span class="restaurant__title">{{ restaurant.title }}</span>
+      <span class="restaurant__address">{{ restaurant.address }}</span>
     </section>
     <section class="invoice__order-meta">
       <div class="order__nugget">
         <span class="info--title">Order</span><br />
-        <span>#12</span>
+        <span>#{{ order.number }}</span>
       </div>
       <div class="order__nugget">
         <span class="info--title">Time</span><br />
-        <span>12:10pm 04/10/2017</span>
+        <span>{{ order.timestamp }}</span>
+      </div>
+      <div class="order__nugget">
+        <span class="info--title">Table</span><br />
+        <span>{{ order.table }}</span>
       </div>
       <div class="order__nugget">
         <span class="info--title">Invoice</span><br />
-        <span>#AJK43</span>
-      </div>
-      <div class="order__nugget">
-        <span class="info--title">Attendant</span><br />
-        <span>Rajiv</span>
+        <span>{{ order.id.substring(0, 8) }}</span>
       </div>
     </section>
     <section class="invoice__order-info">
@@ -45,7 +45,7 @@
           <tr>
             <td class="order-info--data">Subtotal</td>
             <td class="order-info--data"></td>
-            <td class="order-info--data">{{ total }}</td>
+            <td class="order-info--data">{{ subtotal }}</td>
           </tr>
           <tr>
             <td class="order-info--data">Discount</td>
@@ -55,7 +55,7 @@
           <tr>
             <td class="order-info--data">Tax</td>
             <td class="order-info--data"></td>
-            <td class="order-info--data">-</td>
+            <td class="order-info--data">{{ tax }}</td>
           </tr>
           <tr>
             <td class="order-info--data">Total</td>
@@ -84,11 +84,24 @@ export default {
             ...state.menu.items[item.itemId],
             quantity: item.quantity,
           })),
+          timestamp: new Date(order.timestamp).toLocaleString(),
         };
       },
+      restaurant: state => ({
+        title: state.title,
+        address: state.address,
+        percentageTax: state.percentageTax,
+      }),
     }),
+    subtotal() {
+      return parseFloat(this.order.items.reduce((total, item) =>
+        total + (item.price * item.quantity), 0));
+    },
+    tax() {
+      return (this.subtotal * (this.restaurant.percentageTax / 100)).toFixed(2);
+    },
     total() {
-      return this.order.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+      return parseFloat(this.subtotal) + parseFloat(this.tax);
     },
   },
 };
