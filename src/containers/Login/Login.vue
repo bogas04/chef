@@ -1,9 +1,8 @@
 <template>
   <main class="page">
     <div class="header">
-      <h1 class="title">
-        <app-icon class="icon" name='stew' width="48" height="48" /> Chef
-      </h1>
+      <app-icon class="icon" name='stew' width="64" height="64" />
+      <h1 class="title">Chef</h1>
       <h2 class="subtitle">The modern restaurant dashboard</h2>
     </div>
     <div class="container">
@@ -85,6 +84,11 @@ export default {
 .header {
   position: absolute;
   top: 100px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  text-shadow: 2px 2px #000;
 
   .title,
   .subtitle {
@@ -126,6 +130,7 @@ export default {
     height: 48px;
     width: 100%;
     border: 1px solid $divider-color;
+    box-sizing: border-box;
     border-radius: 4px;
     padding-left: 8px;
 
