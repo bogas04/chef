@@ -6,3 +6,4 @@ export { default as FloatingButton } from './FloatingButton.vue';
 export { default as ButtonSelect } from './ButtonSelect.vue';
 export { default as AppTooltip } from './AppTooltip.vue';
 export { default as EmptyPlaceholder } from './EmptyPlaceholder.vue';
+export { default as NotificationPanel } from './NotificationPanel.vue';
