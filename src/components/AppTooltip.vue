@@ -19,7 +19,6 @@ export default {
   color: $primary-color-text;
   padding: 4px 12px; 
   border-radius: 4px;
-  white-space: nowrap;
   top: -36px;
   text-align: center;
 }

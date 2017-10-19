@@ -98,11 +98,20 @@ export default {
   color: #fff;
   align-items: center;
   text-shadow: 2px 2px #000;
+  font-size: 1.5rem;
 
   .title,
   .subtitle {
     color: $primary-color-text;
     text-align: center;
+  }
+
+  .title {
+    font-size: 1.6em;
+  }
+
+  .subtitle {
+    font-size: 1.2em;
   }
 }
 

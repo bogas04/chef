@@ -68,6 +68,7 @@ export default {
 
 <style scoped lang="scss">
 @import "~styles/colors.scss";
+@import "~styles/mixins.scss";
 
 .app-header {
   width: 100%;
@@ -76,7 +77,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  @include box_shadow(1);
 }
 
 .tab-container {
