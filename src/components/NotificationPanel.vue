@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div class="panel">
+    <div class="panel" @blur="console.log('blur')">
       <slot></slot>
     </div>
   </transition>
@@ -19,7 +19,5 @@ export default {
   position: absolute;
   right: 0px;
   background: #fff;
-  min-width: 150px;
-  min-height: 100px;
 }
 </style>

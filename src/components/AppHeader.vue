@@ -10,10 +10,19 @@
     </div>
     <div class="controls">
       <div class="control">
-        <app-icon name="notification" width="24" height="24" />
+        <app-icon name="notification" width="24" height="24" @click.native="toggleNotificationPanel"
+        />
+        <div class="badge" v-if="hasUnreadNotifications">⚫️</div>
+        <notification-panel v-if="notificationPanelOpen">
+          <div class="no-notification">😁 <br/> All caught up</div>
+        </notification-panel>
       </div>
-      <div class="control" @click="logout">
-        <app-icon name="user" width="24" height="24" />
+      <div class="control">
+        <app-icon name="user" width="24" height="24" @click.native="userPanelOpen = !userPanelOpen"
+        />
+        <notification-panel v-if="userPanelOpen">
+          <div class="user__setting" @click="logout">Log out</div>
+        </notification-panel>
       </div>
     </div>
   </header>
@@ -21,9 +30,13 @@
 
 <script>
 import { mapActions } from 'vuex';
+import NotificationPanel from './NotificationPanel';
 
 export default {
   name: 'AppHeader',
+  components: {
+    NotificationPanel,
+  },
   data() {
     return {
       tabs: [
@@ -36,9 +49,18 @@ export default {
         { title: 'reports', icon: 'salad' },
       ],
       active: 'orders',
+      notificationPanelOpen: false,
+      userPanelOpen: false,
+      hasUnreadNotifications: true,
     };
   },
   methods: {
+    toggleNotificationPanel() {
+      this.notificationPanelOpen = !this.notificationPanelOpen;
+      if (this.notificationPanelOpen) {
+        this.hasUnreadNotifications = false;
+      }
+    },
     ...mapActions(['logout']),
   },
 };
@@ -71,23 +93,38 @@ export default {
   .control {
     padding: 0 12px;
     color: $primary-text-color;
-    cursor: pointer;
+    position: relative;
+
+    .svg-icon {
+      cursor: pointer;
+    }
   }
 }
 
-.logout-control {
-  padding: 6px 12px;
-  color: $divider-color;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  border: 1px solid $divider-color;
-  border-radius: 4px;
+.no-notification {
+  width: 180px;
+  padding: 16px;
+  color: grey;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-.logout-control:hover {
-  border-color: rgb(21, 101, 192);
-  color: rgb(21, 101, 192);
+.badge {
+  position: absolute;
+  color: $primary-color-light;
+  right: 10px;
+  bottom: -8px;
+}
+
+.user__setting {
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 8px 24px;
+}
+
+.item {
+  padding: 8px 12px;
+  max-width: 400px;
 }
 
 a {
@@ -101,6 +138,10 @@ a {
   padding: 0 12px;
   text-transform: uppercase;
   color: #424242;
+
+  .icon {
+    margin-right: 8px;
+  }
 }
 
 .tab:hover {
@@ -110,14 +151,6 @@ a {
 .tab.disabled:hover {
   color: #424242;
   cursor: default;
-}
-
-.tab>img {
-  margin-right: 8px;
-}
-
-.icon {
-  margin-right: 8px;
 }
 
 .active-tab .tab {
