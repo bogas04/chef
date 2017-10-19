@@ -22,6 +22,9 @@ const store = {
       }
     },
   },
+  getters: {
+    isAuthenticated: state => state.loginStatus === LOGIN_STATUS.SUCCESS,
+  },
   actions: {
     async attemptLogin({ dispatch, commit }, credentials) {
       commit({
