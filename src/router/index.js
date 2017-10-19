@@ -6,6 +6,7 @@ import Reservations from '@/containers/Reservations/Reservations';
 import Login from '@/containers/Login/Login';
 import Registration from '@/containers/Registration/Registration';
 import Reports from '@/containers/Reports/Reports';
+import Tables from '@/containers/Tables/Tables';
 import Dashboard from '@/containers/Dashboard';
 
 Vue.use(Router);
@@ -26,6 +27,11 @@ export default new Router({
           path: 'menu',
           name: 'Menu',
           component: Menu,
+        },
+        {
+          path: 'tables',
+          name: 'Tables',
+          component: Tables,
         },
         {
           path: 'reservations',

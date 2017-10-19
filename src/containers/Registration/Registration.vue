@@ -39,6 +39,12 @@
             v-model="restaurantTax" />
           <h5 class="error" v-show="errors.has('restaurantTax')">Provide tax details</h5>
         </div>
+        <div class="control">
+          <label for="" class="control__label">Total tables</label>
+          <input type="number" class="control__input" name="tableCount" v-validate="'required'"
+            v-model="restaurantTableCount" />
+          <h5 class="error" v-show="errors.has('tableCount')">Provide number of tables</h5>
+        </div>
         <app-button :class="{ disabled: errors.items.length }" primary='true' @click.native="attemptRegistration">Finish</app-button>
       </div>
     </section>
@@ -62,6 +68,7 @@ export default {
       password: '',
       restaurantTitle: '',
       restaurantTax: 12,
+      restaurantTableCount: 10,
       activeSectionIndex: 0,
     };
   },

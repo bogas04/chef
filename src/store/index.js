@@ -6,16 +6,14 @@ import menuStore from './menuStore';
 import orderStore from './orderStore';
 import reservationStore from './reservationStore';
 import userStore from './userStore';
+import tableStore from './tableStore';
 
 Vue.use(Vuex);
 
 const defaultStore = {
   user: {},
-  orders: [],
-  menu: {},
-  reservations: [],
   percentageTax: 12,
-  address: '220, Baker street',
+  address: '220B, Baker street',
 };
 
 /* eslint-disable no-param-reassign */
@@ -26,6 +24,7 @@ export default new Vuex.Store({
     orders: orderStore,
     menu: menuStore,
     reservations: reservationStore,
+    tables: tableStore,
   },
   mutations: {
     setData(state, payload) {

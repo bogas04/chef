@@ -42,7 +42,7 @@ export default {
       tabs: [
         { title: 'orders', icon: 'groceries' },
         { title: 'menu', icon: 'vegetables' },
-        { title: 'tables', icon: 'store', disabled: true },
+        { title: 'tables', icon: 'store' },
         { title: 'reservations', icon: 'restaurant' },
         { title: 'delivery', icon: 'food-stall', disabled: true },
         { title: 'inventory', icon: 'stew', disabled: true },
