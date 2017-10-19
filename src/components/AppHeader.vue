@@ -9,7 +9,12 @@
       </router-link>
     </div>
     <div class="controls">
-      <span class="logout-control" @click="logout">Log out</span>
+      <div class="control">
+        <app-icon name="notification" width="24" height="24" />
+      </div>
+      <div class="control" @click="logout">
+        <app-icon name="user" width="24" height="24" />
+      </div>
     </div>
   </header>
 </template>
@@ -61,6 +66,13 @@ export default {
 .controls {
   padding: 4px;
   margin-right: 8px;
+  display: flex;
+
+  .control {
+    padding: 0 12px;
+    color: $primary-text-color;
+    cursor: pointer;
+  }
 }
 
 .logout-control {
