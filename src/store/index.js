@@ -12,7 +12,7 @@ Vue.use(Vuex);
 
 const defaultStore = {
   user: {},
-  percentageTax: 12,
+  percentageTax: 9,
   address: '220B, Baker street',
 };
 

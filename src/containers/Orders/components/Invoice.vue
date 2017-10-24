@@ -48,12 +48,12 @@
             <td class="order-info--data">{{ subtotal }}</td>
           </tr>
           <tr>
-            <td class="order-info--data">Discount</td>
+            <td class="order-info--data">SGST ({{ restaurant.percentageTax }}%)</td>
             <td class="order-info--data"></td>
-            <td class="order-info--data">-</td>
+            <td class="order-info--data">{{ tax }}</td>
           </tr>
           <tr>
-            <td class="order-info--data">Tax</td>
+            <td class="order-info--data">CGST ({{ restaurant.percentageTax }}%)</td>
             <td class="order-info--data"></td>
             <td class="order-info--data">{{ tax }}</td>
           </tr>
@@ -101,7 +101,7 @@ export default {
       return (this.subtotal * (this.restaurant.percentageTax / 100)).toFixed(2);
     },
     total() {
-      return parseFloat(this.subtotal) + parseFloat(this.tax);
+      return parseFloat(this.subtotal) + (2 * parseFloat(this.tax));
     },
   },
 };
