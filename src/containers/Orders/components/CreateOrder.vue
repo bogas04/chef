@@ -115,9 +115,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~styles/colors.scss";
+@import "~styles/colors", "~styles/mixins";
 
 .create-order {
+  @include box_shadow(2);
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -126,7 +127,6 @@ export default {
   bottom: 8px;
   width: 480px;
   background: #FAFAFA;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 2px;
 }
 

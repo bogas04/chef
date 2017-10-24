@@ -35,15 +35,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~styles/colors.scss";
+@import '~styles/colors', '~styles/mixins';
 
 .menu-item {
+  @include box_shadow(2);
   width: 240px;
   height: 56px;
   margin: 8px;
   padding: 12px;
   background: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,7 +51,7 @@ export default {
 }
 
 .menu-item:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  @include box_shadow(3);
 }
 
 .flex-column {

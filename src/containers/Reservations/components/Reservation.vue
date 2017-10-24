@@ -37,15 +37,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~styles/colors.scss';
+@import '~styles/colors', '~styles/mixins';
 
 .reservation {
+  @include box_shadow(1);
   background: #fff;
   padding: 8px 12px;
   margin: 4px;
   width: 300px;
   height: 140px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   display: flex;
   flex-direction: column;
 }

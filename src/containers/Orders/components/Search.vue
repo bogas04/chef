@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~styles/colors.scss';
+@import '~styles/colors', '~styles/mixins';
 
 .search-container {
   display: flex;
@@ -70,13 +70,13 @@ export default {
 }
 
 .results {
+  @include box_shadow(1);
   position: absolute;
   min-height: 48px;
   left: 12px;
   right: 12px;
   margin-top: 56px;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 4px;
 }
 
@@ -85,7 +85,7 @@ export default {
   padding: 0 12px;
 }
 
-.result>span {
+.result > span {
   line-height: 48px;
 }
 </style>

@@ -5,14 +5,16 @@
 </template>
 
 <style scoped lang="scss">
+@import "~styles/mixins";
+
 .floating-window {
+  @include box_shadow(2);
   position: absolute;
   right: 8px;
   top: 8px;
   bottom: 8px;
   width: 480px;
-  background: #FAFAFA;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: #fafafa;
   border-radius: 2px;
 }
 </style>

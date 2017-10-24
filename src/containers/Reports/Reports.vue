@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~styles/colors.scss';
+@import '~styles/colors', '~styles/mixins';
 
 .reports {
   width: 100%;
@@ -77,8 +77,8 @@ export default {
 }
 
 .number-reports, .revenue-reports {
+  @include box_shadow(2);
   display: flex;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .number-report {

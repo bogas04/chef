@@ -63,7 +63,10 @@ export default {
       this.attemptingLogin = true;
 
       try {
-        await this.attemptLogin({ username: this.username, password: this.password });
+        await this.attemptLogin({
+          username: this.username,
+          password: this.password,
+        });
       } catch (error) {
         log(error);
       }
@@ -76,8 +79,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~styles/colors.scss";
-@import "~styles/underline_mixin.scss";
+@import '~styles/colors', '~styles/mixins', '~styles/underline_mixin';
 
 .page {
   height: 100%;
@@ -86,7 +88,8 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient( rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)), url('./login-bg.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url('./login-bg.jpg');
   background-size: cover;
 }
 
@@ -116,11 +119,11 @@ export default {
 }
 
 .container {
+  @include box_shadow(3);
   width: 400px;
   padding: 32px 24px;
   padding-bottom: 0;
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 6px;
 }
 
@@ -168,13 +171,13 @@ export default {
 }
 
 .btn {
+  @include box_shadow(2);
   width: 100%;
   font-size: 1.25rem;
   height: 48px;
   text-transform: capitalize;
   box-sizing: border-box;
   border-radius: 4px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .btn.primary:hover {
@@ -197,8 +200,8 @@ export default {
 
     .option__link {
       @include link-underline(#fff,
-      #0D47A1,
-      #0D47A1);
+      #0d47a1,
+      #0d47a1);
     }
   }
 }

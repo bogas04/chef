@@ -86,9 +86,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~styles/colors.scss";
+@import '~styles/colors';
+@import '~styles/mixins';
 
 .order {
+  @include box_shadow(2);
   width: 280px;
   height: 360px;
   margin: 8px;
@@ -96,12 +98,11 @@ export default {
   background: #fff;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .order:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  @include box_shadow(4);
 }
 
 .center {
@@ -138,7 +139,7 @@ export default {
   color: $success-color;
 }
 
-.table>span {
+.table > span {
   margin-left: 2px;
 }
 
@@ -177,16 +178,16 @@ hr {
   cursor: pointer;
 }
 
-.control>span,
-.control>.svg-icon {
+.control > span,
+.control > .svg-icon {
   font-size: 0.75rem;
   height: 16px;
   color: $secondary-text-color;
   text-transform: uppercase;
 }
 
-.control:hover>span,
-.control:hover>.svg-icon {
+.control:hover > span,
+.control:hover > .svg-icon {
   color: $info-color;
 }
 
