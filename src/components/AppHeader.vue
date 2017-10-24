@@ -9,12 +9,12 @@
       </router-link>
     </div>
     <div class="controls">
-      <div class="control">
-        <app-icon name="notification" width="24" height="24" @click.native="toggleNotificationPanel"
+      <div class="control" @mouseenter="notificationPanelOpen = true" @mouseleave="notificationPanelOpen = false">
+        <app-icon name="notification" width="24" height="24"
         />
         <div class="badge" v-if="hasUnreadNotifications">⚫️</div>
         <notification-panel v-if="notificationPanelOpen">
-          <div class="no-notification">😁 <br/> All caught up</div>
+          <div class="no-notification">No notifications</div>
         </notification-panel>
       </div>
       <div class="control">

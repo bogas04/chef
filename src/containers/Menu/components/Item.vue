@@ -40,9 +40,8 @@ export default {
 .menu-item {
   @include box_shadow(2);
   width: 240px;
-  height: 56px;
   margin: 8px;
-  padding: 12px;
+  padding: 0.8em 1.6em;
   background: #fff;
   display: flex;
   align-items: center;
