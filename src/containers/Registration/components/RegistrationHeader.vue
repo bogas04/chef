@@ -33,22 +33,19 @@ export default {
 .tab {
   display: flex;
   align-items: center;
-  flex-basis: 10%;
   border-right: 1px solid rgba(0, 0, 0, 0.15);
   padding: 0 16px;
 
   .tab__number {
-    font-size: 1.4rem;
+    font-size: 1em;
     background: $secondary-text-color;
     color: #fff;
-    width: 32px;
-    height: 32px;
     text-align: center;
     border-radius: 50%;
     margin-right: 12px;
-
+    padding: 0 0.7em;
     span {
-      line-height: 32px;
+      line-height: 2em;
     }
   }
 
