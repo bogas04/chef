@@ -11,7 +11,6 @@ const getOrderDefaults = () => ({
   created: new Date(),
 });
 
-// eslint-disable-next-line
 export const buildOrder = order => ({
   ...getOrderDefaults(),
   ...order,
@@ -25,3 +24,13 @@ export const buildMenuItem = item => ({
   ...getMenuItemDefaults(),
   ...item,
 });
+
+export const calculateTotal = (menu, tax, selectedItems) => {
+  const subTotal = selectedItems.reduce((sum, item) =>
+    sum + (menu[item.itemId].price * item.quantity), 0);
+
+  // Computed tax (SGST + CGST)
+  const total = (subTotal * (100 + (2 * tax))) / 100;
+
+  return total;
+};

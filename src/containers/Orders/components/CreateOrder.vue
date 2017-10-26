@@ -39,7 +39,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import { buildOrder } from '@/utils/order';
+import { buildOrder, calculateTotal } from '@/utils/order';
 import { AppButton } from '@/components';
 import { ORDER_TYPES } from '@/constants';
 import Search from './Search';
@@ -62,7 +62,9 @@ export default {
       this.$emit('update:orderPopupVisible', false);
     },
     addToSelectedItems(id) {
-      const itemIndex = this.selectedItems.findIndex(item => item.itemId === id);
+      const itemIndex = this.selectedItems.findIndex(
+        item => item.itemId === id,
+      );
 
       if (itemIndex > -1) {
         this.selectedItems[itemIndex].quantity += 1;
@@ -76,19 +78,24 @@ export default {
         table: this.table,
         type: this.selectedType,
         items: [...this.selectedItems],
+        total: calculateTotal(this.menu.items, this.tax, this.selectedItems),
       });
 
       this.addOrder(order);
       this.dismiss();
     },
     increaseQuantity(id) {
-      const itemIndex = this.selectedItems.findIndex(item => item.itemId === id);
+      const itemIndex = this.selectedItems.findIndex(
+        item => item.itemId === id,
+      );
       if (itemIndex > -1) {
         this.selectedItems[itemIndex].quantity += 1;
       }
     },
     decreaseQuantity(id) {
-      const itemIndex = this.selectedItems.findIndex(item => item.itemId === id);
+      const itemIndex = this.selectedItems.findIndex(
+        item => item.itemId === id,
+      );
       if (itemIndex > -1) {
         const quantity = this.selectedItems[itemIndex].quantity;
         if (quantity === 1) {
@@ -98,15 +105,17 @@ export default {
         }
       }
     },
-    ...mapActions([
-      'addOrder',
-    ]),
+    ...mapActions(['addOrder']),
   },
   computed: {
     ...mapState({
       menu: state => state.menu,
+      tax: state => state.percentageTax,
       options(state) {
-        return Object.values(state.menu.items).map(item => ({ text: item.title, value: item.id }));
+        return Object.values(state.menu.items).map(item => ({
+          text: item.title,
+          value: item.id,
+        }));
       },
       totalOrders: state => state.orders.length,
     }),
@@ -115,7 +124,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~styles/colors", "~styles/mixins";
+@import '~styles/colors', '~styles/mixins';
 
 .create-order {
   @include box_shadow(2);
@@ -126,7 +135,7 @@ export default {
   top: 8px;
   bottom: 8px;
   width: 480px;
-  background: #FAFAFA;
+  background: #fafafa;
   border-radius: 2px;
 }
 
@@ -138,7 +147,7 @@ header {
   border-radius: 2px;
 }
 
-header>span {
+header > span {
   line-height: 36px;
   margin-left: 12px;
 }
@@ -175,8 +184,8 @@ header>span {
   height: 48px;
   line-height: 48px;
   text-align: center;
-  border: 1px solid #E0E0E0;
-  transition: all .3s cubic-bezier(.645, .045, .355, 1);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .type:first-child {
@@ -201,7 +210,7 @@ header>span {
   margin: 12px;
 }
 
-.table-control>input {
+.table-control > input {
   height: 30px;
   width: 48px;
   font-size: 1.25rem;
@@ -236,14 +245,14 @@ header>span {
   padding: 4px;
   width: 16px;
   text-align: center;
-  background: #448AFF;
+  background: #448aff;
   cursor: pointer;
   color: #fff;
 }
 
 .quantity--decrease:hover,
 .quantity--increase:hover {
-  background: #2962FF;
+  background: #2962ff;
 }
 
 .quantity--decrease {
