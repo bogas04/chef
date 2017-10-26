@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     time() {
-      return distanceInWordsToNow(this.order.timestamp);
+      return distanceInWordsToNow(this.order.created);
     },
     isFulfilled() {
       return this.order.status === ORDER_STATUS.FULFILLED;

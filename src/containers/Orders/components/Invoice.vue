@@ -14,7 +14,7 @@
       </div>
       <div class="order__nugget">
         <span class="info--title">Time</span><br />
-        <span>{{ order.timestamp }}</span>
+        <span>{{ order.created }}</span>
       </div>
       <div class="order__nugget">
         <span class="info--title">Table</span><br />
@@ -84,7 +84,7 @@ export default {
             ...state.menu.items[item.itemId],
             quantity: item.quantity,
           })),
-          timestamp: new Date(order.timestamp).toLocaleString(),
+          created: order.created.toLocaleString(),
         };
       },
       restaurant: state => ({
