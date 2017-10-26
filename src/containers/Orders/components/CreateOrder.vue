@@ -39,6 +39,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import find from 'lodash/find';
+import reject from 'lodash/reject';
 import { buildOrder, calculateTotal } from '@/utils/order';
 import { AppButton } from '@/components';
 import { ORDER_TYPES } from '@/constants';
@@ -62,12 +64,10 @@ export default {
       this.$emit('update:orderPopupVisible', false);
     },
     addToSelectedItems(id) {
-      const itemIndex = this.selectedItems.findIndex(
-        item => item.itemId === id,
-      );
+      const item = find(this.selectedItems, { itemId: id });
 
-      if (itemIndex > -1) {
-        this.selectedItems[itemIndex].quantity += 1;
+      if (item) {
+        item.quantity += 1;
       } else {
         this.selectedItems.push({ itemId: id, quantity: 1 });
       }
@@ -85,24 +85,18 @@ export default {
       this.dismiss();
     },
     increaseQuantity(id) {
-      const itemIndex = this.selectedItems.findIndex(
-        item => item.itemId === id,
-      );
-      if (itemIndex > -1) {
-        this.selectedItems[itemIndex].quantity += 1;
+      const item = find(this.selectedItems, { itemId: id });
+      if (item) {
+        item.quantity += 1;
       }
     },
     decreaseQuantity(id) {
-      const itemIndex = this.selectedItems.findIndex(
-        item => item.itemId === id,
-      );
-      if (itemIndex > -1) {
-        const quantity = this.selectedItems[itemIndex].quantity;
-        if (quantity === 1) {
-          this.selectedItems.splice(itemIndex, 1);
-        } else {
-          this.selectedItems[itemIndex].quantity -= 1;
-        }
+      const item = find(this.selectedItems, { itemId: id });
+
+      if (item.quantity === 1) {
+        this.selectedItems = reject(this.selectedItems, ['itemId', id]);
+      } else {
+        item.quantity -= 1;
       }
     },
     ...mapActions(['addOrder']),
