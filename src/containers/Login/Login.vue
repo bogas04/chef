@@ -85,7 +85,6 @@ export default {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
@@ -94,9 +93,9 @@ export default {
 }
 
 .header {
-  position: absolute;
-  top: 100px;
   display: flex;
+  flex-basis: 30%;
+  justify-content: center;
   flex-direction: column;
   color: #fff;
   align-items: center;
