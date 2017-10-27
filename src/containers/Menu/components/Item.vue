@@ -20,11 +20,6 @@ import keys from 'lodash/keys';
 
 export default {
   props: ['item'],
-  methods: {
-    editItem(itemId) {
-      this.$emit('editItem', itemId);
-    },
-  },
   computed: {
     selectedTags() {
       const tags = this.item.tags || {};

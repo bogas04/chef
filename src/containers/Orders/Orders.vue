@@ -74,7 +74,7 @@ export default {
         return [...state.orders].map(order => ({
           ...order,
           items: order.items.map(item => ({
-            ...state.menu[item.itemId],
+            ...state.menu[item.id],
             quantity: item.quantity,
           })),
         }));

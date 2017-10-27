@@ -18,13 +18,13 @@
 
       <div class="items control">
         <span class="subheader" v-if="selectedItems.length">items</span>
-        <div class="item" v-for="item in selectedItems" :key="item.itemId">
-          <span class="item--title">{{ menu[item.itemId].title }}</span>
+        <div class="item" v-for="item in selectedItems" :key="item.id">
+          <span class="item--title">{{ menu[item.id].title }}</span>
 
           <div class="quantity-control">
-            <div class="quantity--decrease" @click="decreaseQuantity(item.itemId)">-</div>
+            <div class="quantity--decrease" @click="decreaseQuantity(item.id)">-</div>
             <span class="quantity--amount">{{ item.quantity }}</span>
-            <div class="quantity--increase" @click="increaseQuantity(item.itemId)">+</div>
+            <div class="quantity--increase" @click="increaseQuantity(item.id)">+</div>
           </div>
         </div>
       </div>
@@ -64,12 +64,12 @@ export default {
       this.$emit('update:orderPopupVisible', false);
     },
     addToSelectedItems(id) {
-      const item = find(this.selectedItems, { itemId: id });
+      const item = find(this.selectedItems, { id });
 
       if (item) {
         item.quantity += 1;
       } else {
-        this.selectedItems.push({ itemId: id, quantity: 1 });
+        this.selectedItems.push({ id, quantity: 1 });
       }
     },
     createOrder() {
@@ -85,16 +85,16 @@ export default {
       this.dismiss();
     },
     increaseQuantity(id) {
-      const item = find(this.selectedItems, { itemId: id });
+      const item = find(this.selectedItems, { id });
       if (item) {
         item.quantity += 1;
       }
     },
     decreaseQuantity(id) {
-      const item = find(this.selectedItems, { itemId: id });
+      const item = find(this.selectedItems, { id });
 
       if (item.quantity === 1) {
-        this.selectedItems = reject(this.selectedItems, ['itemId', id]);
+        this.selectedItems = reject(this.selectedItems, ['id', id]);
       } else {
         item.quantity -= 1;
       }

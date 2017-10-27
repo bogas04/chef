@@ -81,7 +81,7 @@ export default {
         return {
           ...order,
           items: order.items.map(item => ({
-            ...state.menu[item.itemId],
+            ...state.menu[item.id],
             quantity: item.quantity,
           })),
           created: order.created.toLocaleString(),

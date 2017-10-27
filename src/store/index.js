@@ -45,7 +45,7 @@ export default new Vuex.Store({
       return state.orders.reduce((totalAmount, order) => {
         // eslint-disable-line
         const orderTotal = order.items.reduce(
-          (amount, item) => amount + (state.menu[item.itemId].price * item.quantity),
+          (amount, item) => amount + (state.menu[item.id].price * item.quantity),
           0,
         );
         return totalAmount + orderTotal;
