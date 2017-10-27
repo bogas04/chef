@@ -51,7 +51,7 @@ export default {
       active: 'orders',
       notificationPanelOpen: false,
       userPanelOpen: false,
-      hasUnreadNotifications: true,
+      hasUnreadNotifications: false,
     };
   },
   methods: {
