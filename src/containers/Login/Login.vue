@@ -93,10 +93,8 @@ export default {
 }
 
 .header {
-  display: flex;
+  @include flex_container($direction: column, $justify: center, $align: center);
   flex-basis: 30%;
-  justify-content: center;
-  flex-direction: column;
   color: #fff;
   align-items: center;
   text-shadow: 2px 2px #000;
