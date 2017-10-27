@@ -14,6 +14,7 @@ const defaultStore = {
   user: {},
   percentageTax: 9,
   address: '220B, Baker street',
+  notifications: [],
 };
 
 /* eslint-disable no-param-reassign */
@@ -37,6 +38,9 @@ export default new Vuex.Store({
       state.menu = {};
       state.reservations = [];
       state.orders = [];
+    },
+    addNotification(state, payload) {
+      state.notifications.push(payload.notification);
     },
   },
   getters: {

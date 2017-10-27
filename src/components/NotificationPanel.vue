@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~styles/mixins';
+@import '~styles/colors', '~styles/mixins';
 
 .panel {
   @include box_shadow(2);

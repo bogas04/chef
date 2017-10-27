@@ -14,7 +14,8 @@
         />
         <div class="badge" v-if="hasUnreadNotifications">⚫️</div>
         <notification-panel v-if="notificationPanelOpen">
-          <div class="no-notification">No notifications</div>
+          <div class="no-notification" v-if="notifications.length === 0">No notifications</div>
+          <app-notification v-for="notification in notifications" :key="notification.title" :notification="notification" />
         </notification-panel>
       </div>
       <div class="control">
@@ -29,13 +30,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import NotificationPanel from './NotificationPanel';
+import AppNotification from './AppNotification';
 
 export default {
   name: 'AppHeader',
   components: {
     NotificationPanel,
+    AppNotification,
   },
   data() {
     return {
@@ -53,6 +56,9 @@ export default {
       userPanelOpen: false,
       hasUnreadNotifications: false,
     };
+  },
+  computed: {
+    ...mapState(['notifications']),
   },
   methods: {
     toggleNotificationPanel() {
