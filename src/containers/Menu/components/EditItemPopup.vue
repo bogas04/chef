@@ -55,7 +55,7 @@ export default {
     ...mapState({
       item(state) {
         // Return item copy
-        return { ...state.menu.items[this.itemId] };
+        return { ...state.menu[this.itemId] };
       },
     }),
   },

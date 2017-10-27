@@ -19,7 +19,7 @@
       <div class="items control">
         <span class="subheader" v-if="selectedItems.length">items</span>
         <div class="item" v-for="item in selectedItems" :key="item.itemId">
-          <span class="item--title">{{ menu.items[item.itemId].title }}</span>
+          <span class="item--title">{{ menu[item.itemId].title }}</span>
 
           <div class="quantity-control">
             <div class="quantity--decrease" @click="decreaseQuantity(item.itemId)">-</div>
@@ -78,7 +78,7 @@ export default {
         table: this.table,
         type: this.selectedType,
         items: [...this.selectedItems],
-        total: calculateTotal(this.menu.items, this.tax, this.selectedItems),
+        total: calculateTotal(this.menu, this.tax, this.selectedItems),
       });
 
       this.addOrder(order);
@@ -106,7 +106,7 @@ export default {
       menu: state => state.menu,
       tax: state => state.percentageTax,
       options(state) {
-        return Object.values(state.menu.items).map(item => ({
+        return Object.values(state.menu).map(item => ({
           text: item.title,
           value: item.id,
         }));

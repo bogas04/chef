@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import keyBy from 'lodash/keyBy';
 import { getRestaurant } from '@/api';
-import { toMap } from '@/utils/common';
 import menuStore from './menuStore';
 import orderStore from './orderStore';
 import reservationStore from './reservationStore';
@@ -28,9 +28,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setData(state, payload) {
-      state.menu = {
-        items: toMap(payload.restaurant.menu, 'id'),
-      };
+      state.menu = keyBy(payload.restaurant.menu, 'id');
       state.orders = payload.restaurant.orders;
       state.reservations = payload.restaurant.reservations;
       state.title = payload.restaurant.title;
@@ -47,8 +45,7 @@ export default new Vuex.Store({
       return state.orders.reduce((totalAmount, order) => {
         // eslint-disable-line
         const orderTotal = order.items.reduce(
-          (amount, item) =>
-            amount + (state.menu.items[item.itemId].price * item.quantity),
+          (amount, item) => amount + (state.menu[item.itemId].price * item.quantity),
           0,
         );
         return totalAmount + orderTotal;

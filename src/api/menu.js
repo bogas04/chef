@@ -1,11 +1,9 @@
 import request from '@/utils/request';
-import { toMap } from '@/utils/common';
+import keyBy from 'lodash/keyBy';
 
 const MENU_ENDPOINT = 'restaurant/menu';
 
-export const fetchMenu = () => request.get(MENU_ENDPOINT).then(res => ({
-  items: toMap(res.data, 'id'),
-}));
+export const fetchMenu = () => request.get(MENU_ENDPOINT).then(res => keyBy(res.data, 'id'));
 
 export const addItem = item => request.post(MENU_ENDPOINT, item).then(res => res.data);
 

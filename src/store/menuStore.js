@@ -10,7 +10,7 @@ const store = {
   },
   mutations: {
     setMenuItem(state, { item }) {
-      Vue.set(state.items, item.id, item);
+      Vue.set(state, item.id, item);
     },
   },
   actions: {
@@ -33,7 +33,7 @@ const store = {
           item,
         });
       } catch (error) {
-        log('Error: Could not update item');
+        log('Error: Could not update item', error);
       }
     },
   },

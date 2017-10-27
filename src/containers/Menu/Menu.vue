@@ -52,7 +52,7 @@ export default {
     ...mapState({
       menu({ menu }) {
         return {
-          categories: groupBy(menu.items, item => item.category),
+          categories: groupBy(menu, item => item.category),
         };
       },
     }),
