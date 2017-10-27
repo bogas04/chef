@@ -19,7 +19,7 @@
   }
 }
 
-@mixin flex_container($direction: row, $justify: flex-start, $align: center) {
+@mixin flex_container($direction: row, $justify: flex-start, $align: flex-start) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;

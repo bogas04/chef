@@ -4,9 +4,7 @@
       <div class="order-meta">
         <div>
           <span class="title">#{{ order.number }}</span><br/>
-          <span>Placed
-            <i>{{ time }}</i>
-          </span>
+          <span class="meta__time">{{ time }}</span>
         </div>
         <div class="inline">
           <chip>{{ order.status }}</chip>
@@ -86,35 +84,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~styles/colors';
-@import '~styles/mixins';
+@import '~styles/colors', '~styles/mixins';
 
 .order {
+  @include flex_container($direction: column);
   @include box_shadow(2);
   width: 280px;
   height: 360px;
-  margin: 8px;
-  padding: 8px;
+  margin: 0 0.4em 0.4em 0;
+  padding: 0.4em;
   background: #fff;
-  display: flex;
-  flex-direction: column;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
 
-.order:hover {
-  @include box_shadow(4);
+  &:first-child {
+    margin-left: 0.4em;
+  }
+
+  &:hover {
+    @include box_shadow(4);
+  }
 }
 
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex_container($justify: center, $align: center);
 }
 
 .order-info {
-  display: flex;
-  flex-direction: column;
+  @include flex_container($direction: column, $align: stretch);
   min-height: 100px;
+  width: 100%;
 }
 
 .title {
@@ -123,28 +121,24 @@ export default {
 }
 
 .inline {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  @include flex_container($direction: column, $align: flex-end);
 }
 
 .order-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex_container($justify: space-between, $align: center);
   margin-bottom: 8px;
+
+  .meta__time {
+    color: $primary-color-light;
+  }
 }
 
 .table {
   color: $success-color;
-}
 
-.table > span {
-  margin-left: 2px;
-}
-
-.user {
-  color: $primary-text-color;
+  .span {
+    margin-left: 2px;
+  }
 }
 
 hr {
@@ -152,43 +146,44 @@ hr {
 }
 
 .order-snippet {
-  display: flex;
-  flex-direction: column;
+  @include flex_container($direction: column);
+  width: 100%;
   padding: 4px;
   flex-grow: 1;
+  overflow-y: auto;
 }
 
 .order-controls {
-  display: flex;
+  @include flex_container($align: center);
   height: 48px;
-  align-items: center;
+  width: 100%;
   visibility: hidden;
+
+  .control {
+    @include flex_container($justify: center, $align: center);
+    flex-grow: 1;
+    height: 36px;
+    cursor: pointer;
+
+    span,
+    .svg-icon {
+      font-size: 0.75rem;
+      height: 16px;
+      color: $secondary-text-color;
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      span,
+      .svg-icon {
+        color: $info-color;
+      }
+    }
+  }
 }
 
 .order:hover .order-controls {
   visibility: visible;
-}
-
-.control {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  cursor: pointer;
-}
-
-.control > span,
-.control > .svg-icon {
-  font-size: 0.75rem;
-  height: 16px;
-  color: $secondary-text-color;
-  text-transform: uppercase;
-}
-
-.control:hover > span,
-.control:hover > .svg-icon {
-  color: $info-color;
 }
 
 .sub {

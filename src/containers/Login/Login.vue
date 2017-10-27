@@ -82,11 +82,9 @@ export default {
 @import '~styles/colors', '~styles/mixins', '~styles/underline_mixin';
 
 .page {
+  @include flex_container($direction: column, $align: center);
   height: 100%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
     url('./login-bg.jpg');
   background-size: cover;
@@ -187,9 +185,8 @@ export default {
 }
 
 .other-options {
-  display: flex;
+  @include flex_container($align: center);
   height: 64px;
-  align-items: center;
 
   .option {
     flex-basis: 50%;
