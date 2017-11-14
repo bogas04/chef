@@ -2,6 +2,8 @@
 
 > Modern restaurant dashboard
 
+[Demo](https://3qo115w1p1.codesandbox.io/)
+
 ## Build Setup
 
 ``` bash
